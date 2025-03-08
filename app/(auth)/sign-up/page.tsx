@@ -12,7 +12,7 @@ export default function SignUpPage() {
   return (
     <AuthCard
       title="Create an account"
-      description="Enter your email below to create your account"
+      description="Join our community today and start your journey to financial literacy in a fun and engaging way."
     >
       <SignUpForm />
     </AuthCard>

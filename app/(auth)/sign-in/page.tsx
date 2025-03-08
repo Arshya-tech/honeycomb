@@ -12,7 +12,7 @@ export default function SignInPage() {
   return (
     <AuthCard
       title="Welcome back"
-      description="Enter your email below to sign in to your account"
+      description="Welcome back! Enter your credentials to access your account and continue your financial journey."
     >
       <SignInForm />
     </AuthCard>

@@ -10,20 +10,28 @@ export default function AuthLayout({
     <div className="flex min-h-screen w-full">
       <div className="flex w-full flex-col items-center justify-center space-y-8 px-4 py-12 lg:w-1/2 lg:px-8">
         {/* Header Section */}
-        <div className="space-y-6 text-center">
+        <div className="relative space-y-6 text-center">
+          <Image
+            src="/assets/honey.webp"
+            alt="Honey"
+            width={80}
+            height={80}
+            className="absolute -top-12 -left-20 size-20 -rotate-[20deg] transition-transform"
+          />
+
+          <Image
+            src="/assets/honey.webp"
+            alt="Honey"
+            width={80}
+            height={80}
+            className="absolute -right-20 -bottom-12 size-20 rotate-[20deg] transition-transform"
+          />
           <Link
             href="/"
             className="group inline-flex items-center gap-3 transition hover:opacity-90"
           >
-            <Image
-              src="/assets/honey.webp"
-              alt="Honey"
-              width={48}
-              height={48}
-              className="h-12 w-12 transition-transform group-hover:scale-110"
-            />
             <h1 className="font-heading text-4xl font-bold sm:text-5xl">
-              Welcome to <span className="text-yellow-600">HoneyHive</span>
+              Welcome to <span className="text-primary">Honeycomb</span>
             </h1>
           </Link>
           <p className="text-muted-foreground mx-auto max-w-lg text-lg leading-relaxed">
@@ -53,7 +61,7 @@ export default function AuthLayout({
       </div>
       {/* Right Side - Background Image */}
       <div className="hidden p-6 lg:block lg:w-1/2">
-        <div className="h-full w-full overflow-hidden rounded-3xl border-2 border-yellow-300 bg-yellow-100 p-2">
+        <div className="h-full w-full overflow-hidden rounded-3xl border-2 border-yellow-700 bg-yellow-100 p-2">
           <div className="relative h-full w-full">
             <Image
               src="/assets/auth-bg.webp"
