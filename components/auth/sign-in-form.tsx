@@ -17,14 +17,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-type FormData = SignInRequest;
-
 export function SignInForm() {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
-  const form = useForm<FormData>({
+  const form = useForm<SignInRequest>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
       email: "",
@@ -32,7 +30,7 @@ export function SignInForm() {
     },
   });
 
-  async function onSubmit(values: FormData) {
+  async function onSubmit(values: SignInRequest) {
     try {
       setError(null);
 

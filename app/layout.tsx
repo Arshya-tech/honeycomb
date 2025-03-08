@@ -5,6 +5,8 @@ import { siteMetadata } from "@/config/site";
 
 import "./globals.css";
 
+import { Toaster } from "@/components/ui/sonner";
+
 const fredoka = Fredoka({
   variable: "--font-heading",
   subsets: ["latin"],
@@ -28,6 +30,7 @@ export default function RootLayout({
       <body
         className={`${fredoka.variable} ${openSans.variable} font-sans antialiased`}
       >
+        <Toaster richColors />
         {children}
       </body>
     </html>
