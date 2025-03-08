@@ -1,5 +1,7 @@
 "use client";
 
+import { useSession } from "next-auth/react";
+
 import { cn } from "@/lib/utils";
 
 import { SidebarNavigation } from "./navigation";
@@ -10,6 +12,8 @@ interface SidebarProps {
 }
 
 export const Sidebar = ({ className }: SidebarProps) => {
+  const { data } = useSession();
+
   return (
     <div
       className={cn(
@@ -17,7 +21,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
         className,
       )}
     >
-      <SidebarUserProfile />
+      <SidebarUserProfile user={data?.user} />
       <SidebarNavigation />
     </div>
   );

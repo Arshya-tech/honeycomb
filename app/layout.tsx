@@ -5,6 +5,9 @@ import { siteMetadata } from "@/config/site";
 
 import "./globals.css";
 
+import { auth } from "@/auth";
+import { SessionProvider } from "next-auth/react";
+
 import { Toaster } from "@/components/ui/sonner";
 
 const fredoka = Fredoka({
@@ -20,18 +23,22 @@ const openSans = Open_Sans({
 
 export const metadata: Metadata = siteMetadata;
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
+
   return (
     <html lang="en">
       <body
         className={`${fredoka.variable} ${openSans.variable} font-sans antialiased`}
       >
-        <Toaster richColors />
-        {children}
+        <SessionProvider session={session}>
+          <Toaster richColors />
+          {children}
+        </SessionProvider>
       </body>
     </html>
   );

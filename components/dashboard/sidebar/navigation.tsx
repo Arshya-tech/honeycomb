@@ -1,56 +1,39 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import {
-  BarChart2,
-  FileText,
-  LayoutDashboard,
-  PiggyBank,
-  Settings,
-  Wallet,
-} from "lucide-react";
+import { motion } from "motion/react";
+
+import { routes } from "@/config/navigation";
 
 import { SidebarNavItem } from "./nav-item";
 
-const routes = [
-  {
-    label: "Dashboard",
-    icon: LayoutDashboard,
-    href: "/dashboard",
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3,
+    },
   },
-  {
-    label: "Savings",
-    icon: PiggyBank,
-    href: "/savings",
-  },
-  {
-    label: "Budget",
-    icon: BarChart2,
-    href: "/budget",
-  },
-  {
-    label: "Summary",
-    icon: FileText,
-    href: "/summary",
-  },
-  {
-    label: "Accounts",
-    icon: Wallet,
-    href: "/accounts",
-  },
-  {
-    label: "Settings",
-    icon: Settings,
-    href: "/settings",
-  },
-];
+};
 
 export const SidebarNavigation = () => {
   const pathname = usePathname();
 
   return (
-    <div className="mt-12 flex-1 overflow-y-auto p-6 2xl:p-8">
-      <nav className="flex flex-col gap-6 text-xl 2xl:gap-10">
+    <motion.div
+      initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5 }}
+      className="mt-12 flex-1 overflow-y-auto p-6 2xl:p-8"
+    >
+      <motion.nav
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="flex flex-col gap-6 text-xl 2xl:gap-10"
+      >
         {routes.map((route) => (
           <SidebarNavItem
             key={route.href}
@@ -58,7 +41,7 @@ export const SidebarNavigation = () => {
             isActive={pathname === route.href}
           />
         ))}
-      </nav>
-    </div>
+      </motion.nav>
+    </motion.div>
   );
 };

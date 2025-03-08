@@ -60,6 +60,10 @@ export async function POST(request: Request) {
     const userId = nanoid();
     const now = Date.now();
 
+    // Generate random avatar number between 1-20
+    const avatarNumber = Math.floor(Math.random() * 20) + 1;
+    const avatarPath = `/avatars/bear${avatarNumber}.webp`;
+
     await db.insert(users).values({
       id: userId,
       email,
@@ -67,6 +71,7 @@ export async function POST(request: Request) {
       password: hashedPassword,
       role: "user",
       createdAt: now,
+      image: avatarPath,
     });
 
     // Return success response with proper headers
@@ -78,6 +83,7 @@ export async function POST(request: Request) {
           email,
           name,
           role: "user",
+          image: avatarPath,
         },
       }),
       {

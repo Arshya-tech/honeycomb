@@ -2,7 +2,6 @@
 
 import { useState, useTransition } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { EyeIcon, EyeOffIcon, Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -21,7 +20,6 @@ import {
 import { Input } from "@/components/ui/input";
 
 export function SignInForm() {
-  const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -69,7 +67,7 @@ export function SignInForm() {
           }
 
           // Success - redirect to home page
-          router.push("/dashboard");
+          window.location.href = "/dashboard";
         } catch (fetchError) {
           // Network or other fetch-related errors
           toast.error(
