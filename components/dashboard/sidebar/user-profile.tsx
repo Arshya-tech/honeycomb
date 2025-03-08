@@ -23,7 +23,7 @@ export const SidebarUserProfile = ({ user }: SidebarUserProfileProps) => {
             className="h-full w-full object-cover"
           />
         </div>
-        <div className="flex flex-col space-y-1">
+        <div className="flex flex-col gap-1.5">
           <h2 className="text-lg font-semibold tracking-tight">{user?.name}</h2>
           <p className="text-muted-foreground/80 text-sm font-medium">
             {user?.email}

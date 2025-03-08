@@ -18,6 +18,18 @@ const container = {
   },
 };
 
+const item = {
+  hidden: { opacity: 0, x: -20, filter: "blur(4px)" },
+  show: {
+    opacity: 1,
+    filter: "blur(0px)",
+    x: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 export const SidebarNavigation = () => {
   const pathname = usePathname();
 
@@ -39,6 +51,7 @@ export const SidebarNavigation = () => {
             key={route.href}
             {...route}
             isActive={pathname === route.href}
+            variants={item}
           />
         ))}
       </motion.nav>

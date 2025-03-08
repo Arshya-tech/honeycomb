@@ -11,6 +11,17 @@ interface SidebarNavItemProps {
   label: string;
   href: string;
   isActive: boolean;
+  variants?: {
+    hidden: { opacity: number; x: number; filter: string };
+    show: {
+      opacity: number;
+      filter: string;
+      x: number;
+      transition: {
+        duration: number;
+      };
+    };
+  };
 }
 
 export const SidebarNavItem = ({
@@ -18,12 +29,11 @@ export const SidebarNavItem = ({
   label,
   href,
   isActive,
+  variants,
 }: SidebarNavItemProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.3 }}
+      variants={variants}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
