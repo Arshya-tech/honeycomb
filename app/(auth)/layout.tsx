@@ -16,7 +16,7 @@ export default function AuthLayout({
             alt="Honey"
             width={80}
             height={80}
-            className="absolute -top-8 left-0 size-16 -rotate-[25deg] transition-transform md:-top-12 md:-left-20 md:size-20 2xl:-left-24"
+            className="absolute -top-8 left-0 size-16 -rotate-[25deg] transition-transform select-none hover:-rotate-12 md:-top-12 md:-left-20 md:size-20 2xl:-left-24"
           />
 
           <Image
@@ -24,19 +24,20 @@ export default function AuthLayout({
             alt="Honey"
             width={80}
             height={80}
-            className="absolute -right-20 -bottom-12 size-20 rotate-[25deg] transition-transform max-md:hidden"
+            className="absolute -right-20 -bottom-12 size-20 rotate-[25deg] transition-transform select-none hover:rotate-12 max-md:hidden"
           />
-          <Link
-            href=""
-            className="group inline-flex items-center gap-3 transition hover:opacity-90"
-          >
+          <div className="group inline-flex items-center gap-3 transition">
             <h1 className="font-heading font-bold md:text-5xl">
               Welcome to <br className="md:hidden" />
-              <span className="text-primary text-4xl sm:text-5xl">
+              <Link
+                href="/"
+                className="text-primary group/appName relative text-4xl sm:text-5xl"
+              >
+                <span className="bg-primary absolute inset-x-0 bottom-0.5 h-1 scale-x-0 transition-transform duration-200 group-hover/appName:scale-x-100 max-lg:hidden" />
                 Honeycomb
-              </span>
+              </Link>
             </h1>
-          </Link>
+          </div>
           <p className="text-muted-foreground mx-auto max-w-lg text-sm leading-relaxed md:text-base lg:text-lg">
             Start your playful journey to financial freedom! Join us and learn
             money management in the most engaging way.
