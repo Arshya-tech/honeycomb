@@ -1,8 +1,18 @@
+import { Sidebar } from "@/components/dashboard/sidebar";
+
 type Props = {
   children: React.ReactNode;
 };
 
-const layout = ({ children }: Props) => {
-  return <main>{children}</main>;
+const DashboardLayout = ({ children }: Props) => {
+  return (
+    <div className="flex gap-6 overflow-hidden p-2 md:p-4 lg:h-svh lg:p-6">
+      <Sidebar />
+      <div className="flex-1 overflow-y-auto rounded-md bg-white lg:rounded-2xl">
+        <main className="">{children}</main>
+      </div>
+    </div>
+  );
 };
-export default layout;
+
+export default DashboardLayout;
