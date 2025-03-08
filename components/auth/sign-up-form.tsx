@@ -76,8 +76,7 @@ export function SignUpForm() {
         }
 
         toast.success("Account created successfully!");
-        router.refresh();
-        router.push("/");
+        window.location.href = "/dashboard";
       });
     } catch (err) {
       toast.error(

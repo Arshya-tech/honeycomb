@@ -18,6 +18,7 @@ declare module "next-auth" {
       name?: string | null;
       emailVerified?: Date | null;
       role?: string;
+      image: string | null;
     } & DefaultSession["user"];
   }
 }
@@ -80,6 +81,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           name: user.name,
           emailVerified: user.emailVerified,
           role: user.role,
+          image: user.image,
         };
       },
     }),
@@ -131,6 +133,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if (token.name) {
           session.user.name = token.name;
         }
+
+        session.user.image = (token.image as string) ?? null;
         session.user.emailVerified = token.emailVerified as Date | null;
         session.user.role = token.role as string | undefined;
       }
@@ -151,6 +155,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       token.email = existingUser.email;
       token.emailVerified = existingUser.emailVerified;
       token.role = existingUser.role;
+      token.image = (existingUser.image as string) ?? null;
 
       return token;
     },

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { LogOut } from "lucide-react";
+import { motion } from "motion/react";
 import { User } from "next-auth";
 
 import { LogoutButton } from "@/components/auth/logout-button";
@@ -11,10 +12,18 @@ interface SidebarUserProfileProps {
 }
 
 export const SidebarUserProfile = ({ user }: SidebarUserProfileProps) => {
+  console.log(user);
+
   return (
-    <div className="flex flex-col border-b p-6 2xl:p-8">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="flex flex-col border-b p-6 2xl:p-8"
+    >
       <div className="flex items-start gap-x-4">
-        <div className="border-border/40 relative size-16 overflow-hidden rounded-lg border shadow-sm transition-transform hover:scale-105">
+        <div className="border-border/40 relative size-16 shrink-0 overflow-hidden rounded-lg border shadow-sm transition-transform hover:scale-105">
           <Image
             src={user?.image || "/avatars/bear19.webp"}
             alt="Profile"
@@ -36,6 +45,6 @@ export const SidebarUserProfile = ({ user }: SidebarUserProfileProps) => {
           icon={<LogOut className="size-3" />}
         />
       </div>
-    </div>
+    </motion.div>
   );
 };

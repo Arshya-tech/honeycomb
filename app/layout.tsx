@@ -36,7 +36,7 @@ export default async function RootLayout({
         className={`${fredoka.variable} ${openSans.variable} font-sans antialiased`}
       >
         <SessionProvider session={session}>
-          <Toaster richColors />
+          <Toaster richColors position="bottom-center" />
           {children}
         </SessionProvider>
       </body>
