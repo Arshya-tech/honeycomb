@@ -99,9 +99,9 @@ export function SignInForm() {
                 <FormLabel>Email</FormLabel>
                 <FormControl>
                   <Input
-                    type="email"
-                    placeholder="example@email.com"
                     {...field}
+                    placeholder="example@email.com"
+                    disabled={isPending}
                   />
                 </FormControl>
                 <FormMessage />
@@ -117,9 +117,10 @@ export function SignInForm() {
                 <FormControl>
                   <div className="relative">
                     <Input
+                      {...field}
                       type={showPassword ? "text" : "password"}
                       placeholder="********"
-                      {...field}
+                      disabled={isPending}
                     />
                     <Button
                       type="button"
@@ -140,7 +141,7 @@ export function SignInForm() {
               </FormItem>
             )}
           />
-          <div className="space-y-4">
+          <div className="-mt-4 space-y-4">
             <div className="flex items-center justify-end">
               <Link
                 href="/forgot-password"

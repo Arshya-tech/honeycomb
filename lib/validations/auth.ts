@@ -20,7 +20,11 @@ export const registerSchema = z
       .trim()
       .min(1, "Name is required")
       .max(100, "Name is too long"),
-    confirmPassword: z.string(),
+    confirmPassword: z
+      .string()
+      .trim()
+      .min(8, "Password must be at least 8 characters")
+      .max(100, "Password must be less than 100 characters"),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
