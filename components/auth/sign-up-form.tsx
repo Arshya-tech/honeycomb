@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signIn } from "next-auth/react";
+import { Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 import { registerSchema, type RegisterRequest } from "@/lib/validations/auth";
 import { Button } from "@/components/ui/button";
@@ -20,7 +21,6 @@ import { Input } from "@/components/ui/input";
 
 export function SignUpForm() {
   const router = useRouter();
-  const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
   const form = useForm<RegisterRequest>({
@@ -35,8 +35,6 @@ export function SignUpForm() {
 
   async function onSubmit(values: RegisterRequest) {
     try {
-      setError(null);
-
       startTransition(async () => {
         const response = await fetch("/api/auth/register", {
           method: "POST",
@@ -53,21 +51,33 @@ export function SignUpForm() {
 
         if (!response.ok) {
           const data = await response.json();
-          setError(data.error || "Something went wrong");
+          toast.error(data.error || "Something went wrong");
           return;
         }
 
-        await signIn("credentials", {
-          email: values.email.toLowerCase(),
-          password: values.password,
-          redirect: false,
+        // After successful registration, attempt to sign in
+        const signInResponse = await fetch("/api/auth/sign-in", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: values.email.toLowerCase(),
+            password: values.password,
+          }),
         });
 
+        if (!signInResponse.ok) {
+          toast.error("Failed to sign in after registration");
+          return;
+        }
+
+        toast.success("Account created successfully!");
         router.refresh();
         router.push("/");
       });
     } catch (err) {
-      setError(
+      toast.error(
         err instanceof Error
           ? err.message
           : "Something went wrong. Please try again.",
@@ -134,11 +144,15 @@ export function SignUpForm() {
             </FormItem>
           )}
         />
-        {error && (
-          <div className="text-destructive text-center text-sm">{error}</div>
-        )}
         <Button type="submit" className="w-full" disabled={isPending}>
-          {isPending ? "Creating account..." : "Create account"}
+          {isPending ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Creating account...
+            </>
+          ) : (
+            "Create account"
+          )}
         </Button>
       </form>
     </Form>

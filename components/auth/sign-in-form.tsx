@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 import { signInSchema, type SignInRequest } from "@/lib/validations/auth";
 import { Button } from "@/components/ui/button";
@@ -19,7 +21,6 @@ import { Input } from "@/components/ui/input";
 
 export function SignInForm() {
   const router = useRouter();
-  const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
   const form = useForm<SignInRequest>({
@@ -32,8 +33,6 @@ export function SignInForm() {
 
   async function onSubmit(values: SignInRequest) {
     try {
-      setError(null);
-
       startTransition(async () => {
         try {
           // Call the API route instead of signIn directly
@@ -54,13 +53,15 @@ export function SignInForm() {
             // Handle different error types
             if (response.status === 400) {
               // Validation error
-              setError(data.error || "Invalid input");
+              toast.error(data.error || "Invalid input");
             } else if (response.status === 401) {
               // Authentication error
-              setError(data.error || "Invalid email or password");
+              toast.error(data.error || "Invalid email or password");
             } else {
               // Server error
-              setError(data.error || "Something went wrong. Please try again.");
+              toast.error(
+                data.error || "Something went wrong. Please try again.",
+              );
             }
             return;
           }
@@ -69,14 +70,14 @@ export function SignInForm() {
           router.push("/dashboard");
         } catch (fetchError) {
           // Network or other fetch-related errors
-          setError(
+          toast.error(
             "Connection error. Please check your internet and try again.",
           );
           console.error("Sign-in fetch error:", fetchError);
         }
       });
     } catch (err) {
-      setError(
+      toast.error(
         err instanceof Error
           ? err.message
           : "Something went wrong. Please try again.",
@@ -117,11 +118,15 @@ export function SignInForm() {
             </FormItem>
           )}
         />
-        {error && (
-          <div className="text-destructive text-center text-sm">{error}</div>
-        )}
         <Button type="submit" className="w-full" disabled={isPending}>
-          {isPending ? "Signing in..." : "Sign in"}
+          {isPending ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Signing in...
+            </>
+          ) : (
+            "Sign in"
+          )}
         </Button>
       </form>
     </Form>
