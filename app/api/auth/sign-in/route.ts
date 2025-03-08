@@ -1,6 +1,5 @@
 import { signIn } from "@/auth";
 import { eq } from "drizzle-orm";
-import { z } from "zod";
 
 import { db } from "@/lib/db";
 import { users } from "@/lib/db/schema";
