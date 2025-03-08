@@ -68,8 +68,7 @@ export function SignInForm() {
           }
 
           // Success - redirect to home page
-          router.refresh();
-          router.push("/");
+          router.push("/dashboard");
         } catch (fetchError) {
           // Network or other fetch-related errors
           setError(

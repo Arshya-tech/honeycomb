@@ -4,18 +4,7 @@ import { z } from "zod";
 
 import { db } from "@/lib/db";
 import { users } from "@/lib/db/schema";
-
-// Define validation schema for sign-in request
-const signInSchema = z.object({
-  email: z
-    .string()
-    .email("Please enter a valid email address")
-    .trim()
-    .toLowerCase(),
-  password: z.string().min(1, "Password is required"),
-});
-
-export type SignInRequest = z.infer<typeof signInSchema>;
+import { signInSchema } from "@/lib/validations/auth";
 
 export async function POST(request: Request) {
   try {
@@ -53,6 +42,7 @@ export async function POST(request: Request) {
       .where(eq(users.email, email));
 
     if (!existingUser) {
+      console.error("user does not exist");
       return new Response(
         JSON.stringify({
           error: "Invalid credentials",
@@ -67,45 +57,16 @@ export async function POST(request: Request) {
       );
     }
 
-    // Attempt to sign in
-    const signInResult = await signIn("credentials", {
+    await signIn("credentials", {
       email,
       password,
       redirect: false,
     });
 
-    // Handle authentication errors
-    if (!signInResult?.ok) {
-      // Map authentication errors to user-friendly messages
-      const errorCode =
-        signInResult?.error === "CredentialsSignin"
-          ? "INVALID_CREDENTIALS"
-          : "AUTH_ERROR";
-
-      return new Response(
-        JSON.stringify({
-          error: "Invalid credentials",
-          code: errorCode,
-        }),
-        {
-          status: 401,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-      );
-    }
-
     // Return success response with user data
     return new Response(
       JSON.stringify({
         success: true,
-        user: {
-          id: existingUser.id,
-          email: existingUser.email,
-          name: existingUser.name,
-          role: existingUser.role,
-        },
       }),
       {
         status: 200,

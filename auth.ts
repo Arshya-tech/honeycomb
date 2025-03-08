@@ -1,5 +1,6 @@
 import { cache } from "react";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
+import bcrypt from "bcryptjs";
 import { eq } from "drizzle-orm";
 import NextAuth, { DefaultSession } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
@@ -66,12 +67,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           return null;
         }
 
-        // In a real application, you would use bcrypt to compare the hashed password
-        // const isValidPassword = await bcrypt.compare(password, user.password);
-
-        // For this template, we're doing a simple comparison
-        // WARNING: This is NOT secure for production - use proper password hashing
-        const isValidPassword = password === user.password;
+        const isValidPassword = await bcrypt.compare(password, user.password);
 
         if (!isValidPassword) {
           console.log("Invalid password");

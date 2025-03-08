@@ -14,6 +14,6 @@ const DashboardPage = async () => {
     );
   }
 
-  return <div>DashboardPage</div>;
+  return <div>No user</div>;
 };
 export default DashboardPage;
