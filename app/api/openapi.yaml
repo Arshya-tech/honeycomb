@@ -1,0 +1,219 @@
+openapi: 3.0.0
+info:
+  title: Next.js Template API
+  version: 1.0.0
+  description: API documentation for the Next.js template application
+
+servers:
+  - url: http://localhost:3000/api
+    description: Local development server
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the user
+        name:
+          type: string
+          description: User's full name
+        email:
+          type: string
+          format: email
+          description: User's email address
+        role:
+          type: string
+          enum: [user, admin]
+          description: User's role in the system
+      required:
+        - id
+        - email
+        - role
+
+    ValidationError:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Validation failed"
+        details:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        code:
+          type: string
+          example: "VALIDATION_ERROR"
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Human-readable error message
+        code:
+          type: string
+          description: Machine-readable error code
+      required:
+        - error
+        - code
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /auth/register:
+    post:
+      summary: Register a new user
+      description: Create a new user account with email and password
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: User's full name
+                  minLength: 1
+                  maxLength: 100
+                email:
+                  type: string
+                  format: email
+                  description: User's email address
+                password:
+                  type: string
+                  format: password
+                  description: |
+                    User's password. Must contain:
+                    - At least 8 characters
+                    - Maximum 100 characters
+                    - At least one uppercase letter
+                    - At least one lowercase letter
+                    - At least one number
+                    - At least one special character (@$!%*?&)
+              required:
+                - email
+                - password
+                - name
+            example:
+              name: "John Doe"
+              email: "john@example.com"
+              password: "StrongP@ss123"
+      responses:
+        "201":
+          description: User successfully registered
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  user:
+                    $ref: "#/components/schemas/User"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+        "409":
+          description: Email already registered
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                error: "Email already registered"
+                code: "EMAIL_EXISTS"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                error: "Internal server error"
+                code: "INTERNAL_ERROR"
+
+  /auth/sign-in:
+    post:
+      summary: Sign in a user
+      description: Authenticate a user with email and password
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: User's email address
+                password:
+                  type: string
+                  format: password
+                  description: User's password
+              required:
+                - email
+                - password
+            example:
+              email: "john@example.com"
+              password: "StrongP@ss123"
+      responses:
+        "200":
+          description: Successfully signed in
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  user:
+                    $ref: "#/components/schemas/User"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+        "401":
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              examples:
+                invalid_credentials:
+                  value:
+                    error: "Invalid credentials"
+                    code: "INVALID_CREDENTIALS"
+                auth_error:
+                  value:
+                    error: "Invalid credentials"
+                    code: "AUTH_ERROR"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                error: "Internal server error"
+                code: "INTERNAL_ERROR"
