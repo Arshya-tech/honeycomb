@@ -133,10 +133,12 @@ export function FinancialProfileClient({
         </MotionLink>
       </div> */}
 
-      <ProgressBar
-        currentStep={currentStep + 1}
-        totalSteps={financialProfileSteps.length}
-      />
+      {!isComplete && (
+        <ProgressBar
+          currentStep={currentStep + 1}
+          totalSteps={financialProfileSteps.length}
+        />
+      )}
 
       <div className="mx-auto w-full px-4 py-16 2xl:py-24">
         {!isComplete ? (

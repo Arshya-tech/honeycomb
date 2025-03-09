@@ -169,12 +169,20 @@ export function FinancialProfileRecommendations({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="flex pt-6"
+        className="flex gap-4 pt-6"
       >
+        <Button
+          onClick={() => (window.location.href = "/challenges")}
+          size="lg"
+          className="gap-2 bg-gradient-to-r from-blue-500 to-blue-600 px-8 py-6 text-lg font-semibold text-white shadow-lg transition-all hover:from-blue-600 hover:to-blue-700 hover:shadow-xl"
+        >
+          Explore Challenges
+          <ChevronRight className="h-4 w-4" />
+        </Button>
         <Button
           onClick={onFinish}
           size="lg"
-          className="gap-2 bg-gradient-to-r from-orange-500 to-orange-600 px-8 py-6 text-lg font-semibold text-white shadow-lg transition-all hover:scale-105 hover:from-orange-600 hover:to-orange-700 hover:shadow-xl"
+          className="gap-2 bg-gradient-to-r from-orange-500 to-orange-600 px-8 py-6 text-lg font-semibold text-white shadow-lg transition-all hover:from-orange-600 hover:to-orange-700 hover:shadow-xl"
         >
           Continue to Dashboard
           <ChevronRight className="h-4 w-4" />

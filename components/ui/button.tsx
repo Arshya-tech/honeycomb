@@ -53,6 +53,7 @@ function Button({
     <Comp
       data-slot="button"
       className={cn(
+        "cursor-pointer",
         buttonVariants({ variant, size, className }),
         isLoading && "cursor-wait opacity-50",
       )}

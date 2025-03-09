@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/auth";
 import { eq } from "drizzle-orm";
@@ -47,9 +46,5 @@ export default async function FinancialProfilePage() {
     recommendations = data?.recommendations;
   }
 
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <FinancialProfileClient initialRecommendations={recommendations} />
-    </Suspense>
-  );
+  return <FinancialProfileClient initialRecommendations={recommendations} />;
 }
