@@ -20,13 +20,13 @@ export const Challenges = ({ challenges }: ChallengesProps) => {
         <span className="rounded-lg bg-rose-200 p-2 shadow-sm">🎯</span>
         Active Challenges
       </h3>
-      <ul className="space-y-6">
+      <ul className="space-y-4 sm:space-y-6">
         {challenges.map((challenge) => (
           <li
             key={challenge.title}
-            className="group relative rounded-xl border-2 border-b-[5px] border-rose-200 bg-white p-5 shadow-md transition-all duration-300"
+            className="group relative rounded-xl border-2 border-b-[5px] border-rose-200 bg-white p-4 shadow-md transition-all duration-300 sm:p-5"
           >
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-3">
                 <div className="aspect-square rounded-lg bg-rose-100 p-2">
                   <span className="text-xl">✨</span>
@@ -38,7 +38,7 @@ export const Challenges = ({ challenges }: ChallengesProps) => {
               <Button
                 variant="default"
                 size="sm"
-                className="rounded-lg bg-rose-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-rose-600"
+                className="w-full rounded-lg bg-rose-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-rose-600 sm:w-auto"
               >
                 Start Challenge
               </Button>

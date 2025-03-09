@@ -30,7 +30,11 @@ const item = {
   },
 };
 
-export const SidebarNavigation = () => {
+interface SidebarNavigationProps {
+  onClose?: () => void;
+}
+
+export const SidebarNavigation = ({ onClose }: SidebarNavigationProps) => {
   const pathname = usePathname();
 
   return (
@@ -52,6 +56,7 @@ export const SidebarNavigation = () => {
             {...route}
             isActive={pathname === route.href}
             variants={item}
+            onClose={onClose}
           />
         ))}
       </motion.nav>

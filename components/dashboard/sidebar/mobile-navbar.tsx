@@ -25,14 +25,14 @@ export const MobileNavbar = ({ appName = "Honeycomb" }: MobileNavbarProps) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
         className={cn(
-          "relative flex h-full items-center justify-between rounded-lg bg-zinc-900 px-4 text-white shadow-lg md:rounded-full",
+          "relative flex h-full items-center justify-between rounded-lg bg-zinc-900 px-4 text-white shadow-lg",
         )}
       >
         <motion.p
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
-          className="font-bold"
+          className="text-primary font-bold md:text-lg"
         >
           {appName}
         </motion.p>

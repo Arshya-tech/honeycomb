@@ -11,6 +11,7 @@ interface SidebarNavItemProps {
   label: string;
   href: string;
   isActive: boolean;
+  onClose?: () => void;
   variants?: {
     hidden: { opacity: number; x: number; filter: string };
     show: {
@@ -30,6 +31,7 @@ export const SidebarNavItem = ({
   href,
   isActive,
   variants,
+  onClose,
 }: SidebarNavItemProps) => {
   return (
     <motion.div
@@ -39,6 +41,7 @@ export const SidebarNavItem = ({
     >
       <Link
         href={href}
+        onClick={onClose}
         className={cn(
           "text-muted-foreground relative flex items-center font-bold",
           {

@@ -71,7 +71,7 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
             </div>
             <div className="flex flex-1 flex-col gap-6 -space-y-12 overflow-y-auto p-6">
               <SidebarUserProfile user={data?.user} />
-              <SidebarNavigation />
+              <SidebarNavigation onClose={onClose} />
             </div>
           </motion.div>
         </>
