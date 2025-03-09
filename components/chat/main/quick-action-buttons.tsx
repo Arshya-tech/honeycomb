@@ -20,22 +20,22 @@ export const QuickActionButtons = ({
     {
       id: "goal-tracking",
       label: `How am I doing on my ${financialGoal} goal?`,
-      icon: <Target className="size-5" />,
+      icon: <Target className="size-4 sm:size-5" />,
     },
     {
       id: "purchase-advice",
       label: "I want to make a big purchase - should I?",
-      icon: <CreditCard className="size-5" />,
+      icon: <CreditCard className="size-4 sm:size-5" />,
     },
     {
       id: "learning",
       label: `Explain investments like I'm ${knowledgeLevel}`,
-      icon: <HelpCircle className="size-5" />,
+      icon: <HelpCircle className="size-4 sm:size-5" />,
     },
     {
       id: "simulation",
       label: "Show me how a purchase would affect my budget",
-      icon: <ChartBar className="size-5" />,
+      icon: <ChartBar className="size-4 sm:size-5" />,
     },
   ];
 
@@ -44,7 +44,7 @@ export const QuickActionButtons = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="mb-3 grid grid-cols-2 gap-3"
+      className="mb-3 grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3"
     >
       {actions.map((action, index) => (
         <motion.div
@@ -71,7 +71,7 @@ export const QuickActionButtons = ({
           <Button
             variant="outline"
             size="sm"
-            className={`rounded-full border-3 px-4 py-3 text-sm font-medium shadow-lg transition-all hover:shadow-md ${
+            className={`rounded-full border-2 px-2.5 py-2 text-xs font-medium shadow-lg transition-all hover:shadow-md sm:border-3 sm:px-4 sm:py-3 sm:text-sm ${
               index % 4 === 0
                 ? "border-green-300 bg-green-50 text-green-700"
                 : index % 4 === 1
@@ -83,7 +83,7 @@ export const QuickActionButtons = ({
             onClick={() => onActionClick(action.id)}
           >
             <span
-              className={`mr-2.5 inline-flex items-center justify-center rounded-full p-2 shadow-sm ${
+              className={`mr-1.5 inline-flex items-center justify-center rounded-full p-1.5 shadow-sm sm:mr-2.5 sm:p-2 ${
                 index % 4 === 0
                   ? "bg-green-200 text-green-800"
                   : index % 4 === 1

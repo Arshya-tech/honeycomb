@@ -31,7 +31,7 @@ export const ChatThread = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="flex flex-1 flex-col gap-8 overflow-y-auto p-6"
+      className="flex min-h-[calc(100vh-120px)] flex-1 flex-col gap-4 overflow-y-auto p-3 sm:gap-8 sm:p-6"
     >
       {messages.length === 0 ? (
         <div className="flex h-full flex-col items-center justify-center">
@@ -39,22 +39,22 @@ export const ChatThread = ({
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-primary/10 border-primary/20 flex size-28 items-center justify-center rounded-full border-4 shadow-lg"
+            className="bg-primary/10 border-primary/20 flex size-20 items-center justify-center rounded-full border-2 shadow-lg sm:size-28 sm:border-4"
             whileHover={{ scale: 1.05, rotate: [0, -5, 5, 0] }}
           >
             <Image
-              width={96}
-              height={96}
+              width={64}
+              height={64}
+              className="rounded-full sm:size-24"
               src="/avatars/bear16.webp"
               alt="Financial Assistant"
-              className="rounded-full"
             />
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-6 text-2xl font-bold"
+            className="mt-4 text-xl font-bold sm:mt-6 sm:text-2xl"
           >
             Your Financial Assistant
           </motion.h2>
@@ -62,7 +62,7 @@ export const ChatThread = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-muted-foreground mt-2 max-w-md text-center text-lg"
+            className="text-muted-foreground mt-2 max-w-[280px] text-center text-base sm:max-w-md sm:text-lg"
           >
             Ask me anything about your finances, goals, or learning path!
           </motion.p>
@@ -80,7 +80,7 @@ export const ChatThread = ({
           ))}
 
           {isLoading && (
-            <div className="ml-14 flex items-center gap-3">
+            <div className="ml-8 flex items-center gap-2 sm:ml-14 sm:gap-3">
               <motion.div
                 className="bg-primary/20 border-primary/10 size-10 rounded-full border-2 shadow-md"
                 animate={{

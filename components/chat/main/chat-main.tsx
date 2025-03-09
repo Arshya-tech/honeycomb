@@ -28,10 +28,18 @@ export const ChatMain = () => {
   const [messages, setMessages] = useState<MessageType[]>(initialMessages);
   const [isLoading, setIsLoading] = useState(false);
   const [paymentAmount, setPaymentAmount] = useState(300); // Default payment amount
+  // const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [userProfile, setUserProfile] = useState({
     financialGoal: "",
     knowledgeLevel: "",
   });
+
+  // Emit custom event when sidebar toggle is clicked
+  // const handleSidebarToggle = () => {
+  //   setIsSidebarOpen(!isSidebarOpen);
+  //   const event = new CustomEvent("toggleSidebar");
+  //   window.dispatchEvent(event);
+  // };
 
   // Reference to the latest messages for use in callbacks
   const messagesRef = useRef<MessageType[]>(messages);
@@ -235,8 +243,31 @@ export const ChatMain = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="flex h-full w-full flex-col"
+      className="relative flex h-full w-full flex-col"
     >
+      {/* <button
+        onClick={handleSidebarToggle}
+        aria-expanded={isSidebarOpen}
+        className="border-primary/10 bg-background hover:bg-accent absolute top-3 left-3 z-50 rounded-lg border p-2 shadow-sm md:hidden"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"button
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+        <span className="sr-only">Toggle sidebar</span>
+      </button> */}
+
       <ChatThread
         messages={messages}
         isLoading={isLoading}
