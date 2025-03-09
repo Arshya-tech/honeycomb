@@ -10,7 +10,7 @@ const authPages = [
 ];
 
 function isAuthenticated(request: NextRequest): boolean {
-  const token = request.cookies.get("authjs.session-token");
+  const token = request.cookies.get("authjs.session-token-honeycomb");
   return !!token;
 }
 

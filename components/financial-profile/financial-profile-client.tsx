@@ -15,16 +15,22 @@ import { FinancialProfileForm } from "@/components/financial-profile/financial-p
 import { FinancialProfileRecommendations } from "@/components/financial-profile/financial-profile-recommendations";
 import { ProgressBar } from "@/components/onboarding/progress-bar";
 
-export function FinancialProfileClient() {
+interface FinancialProfileClientProps {
+  initialRecommendations?: Recommendation | null;
+}
+
+export function FinancialProfileClient({
+  initialRecommendations,
+}: FinancialProfileClientProps) {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<Partial<FinancialProfileFormData>>(
     {},
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isComplete, setIsComplete] = useState(false);
+  const [isComplete, setIsComplete] = useState(!!initialRecommendations);
   const [recommendations, setRecommendations] = useState<Recommendation | null>(
-    null,
+    initialRecommendations || null,
   );
 
   const handleNext = (stepData: Partial<FinancialProfileFormData>) => {

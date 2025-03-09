@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
+import { getCurrentUser } from "@/auth";
 import { eq } from "drizzle-orm";
 
 import { learningPaths } from "@/config/financial-profile";
@@ -8,9 +8,11 @@ import { financialProfiles } from "@/lib/db/schema";
 
 export async function GET() {
   try {
-    const session = await auth();
+    const currentUser = await getCurrentUser();
 
-    if (!session?.user?.id) {
+    if (!currentUser?.id) {
+      console.log("currentUser", currentUser);
+
       return NextResponse.json(
         { error: "You must be logged in to view recommendations" },
         { status: 401 },
@@ -21,7 +23,7 @@ export async function GET() {
     const [financialProfile] = await db
       .select()
       .from(financialProfiles)
-      .where(eq(financialProfiles.userId, session.user.id))
+      .where(eq(financialProfiles.userId, currentUser.id))
       .limit(1);
 
     if (!financialProfile) {

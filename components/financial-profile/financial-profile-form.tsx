@@ -76,10 +76,8 @@ export function FinancialProfileForm({
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.3, delay: 0.1 }}
                         >
-                          <FormItem className="bg-card border-border flex items-center space-y-0 space-x-3 rounded-lg border p-4">
-                            <FormControl>
-                              <RadioGroupItem value={option.id} />
-                            </FormControl>
+                          <div className="bg-card border-border flex items-center space-x-3 rounded-lg border p-4">
+                            <RadioGroupItem value={option.id} />
                             <FormLabel className="cursor-pointer font-normal">
                               <div className="font-medium">{option.label}</div>
                               {option.description && (
@@ -88,7 +86,7 @@ export function FinancialProfileForm({
                                 </div>
                               )}
                             </FormLabel>
-                          </FormItem>
+                          </div>
                         </motion.div>
                       ),
                     )}
@@ -117,33 +115,42 @@ export function FinancialProfileForm({
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.3, delay: 0.1 }}
                         >
-                          <FormItem className="bg-card border-border flex items-center space-y-0 space-x-3 rounded-lg border p-4">
+                          <FormItem
+                            className="bg-card border-border hover:bg-muted/50 flex cursor-pointer items-center space-y-0 space-x-4 rounded-lg border p-4 transition-colors"
+                            onClick={() => {
+                              const currentValue = field.value || [];
+                              const isChecked = currentValue.includes(
+                                // @ts-expect-error - field.value is string[] for multi-select
+                                option.id,
+                              );
+                              if (!isChecked) {
+                                field.onChange([...currentValue, option.id]);
+                              } else {
+                                field.onChange(
+                                  // @ts-expect-error - field.value is string[] for multi-select
+                                  currentValue.filter(
+                                    (value: string) => value !== option.id,
+                                  ),
+                                );
+                              }
+                            }}
+                          >
                             <FormControl>
                               <Checkbox
+                                className="size-5"
                                 checked={(field.value || []).includes(
                                   // @ts-expect-error - field.value is string[] for multi-select
                                   option.id,
                                 )}
-                                onCheckedChange={(checked: boolean) => {
-                                  const currentValue = field.value || [];
-                                  if (checked) {
-                                    field.onChange([
-                                      ...currentValue,
-                                      option.id,
-                                    ]);
-                                  } else {
-                                    field.onChange(
-                                      // @ts-expect-error - currentValue is string[] for multi-select
-                                      currentValue.filter(
-                                        (value: string) => value !== option.id,
-                                      ),
-                                    );
-                                  }
-                                }}
                               />
                             </FormControl>
-                            <FormLabel className="cursor-pointer font-normal">
-                              {option.label}
+                            <FormLabel className="font-normal">
+                              <div className="font-medium">{option.label}</div>
+                              {option.description && (
+                                <div className="text-muted-foreground text-sm">
+                                  {option.description}
+                                </div>
+                              )}
                             </FormLabel>
                           </FormItem>
                         </motion.div>

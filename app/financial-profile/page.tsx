@@ -1,23 +1,27 @@
+import { Suspense } from "react";
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/auth";
+import { eq } from "drizzle-orm";
 
+import { db } from "@/lib/db";
+import { users } from "@/lib/db/schema";
 import { FinancialProfileClient } from "@/components/financial-profile/financial-profile-client";
 
-// async function checkUserProfile(userId: string) {
-//   try {
-//     // Check if the user has a financial profile in the database
-//     const [profile] = await db
-//       .select()
-//       .from(financialProfiles)
-//       .where(eq(financialProfiles.userId, userId))
-//       .limit(1);
+async function getRecommendations() {
+  try {
+    const response = await fetch(`/api/financial-profile/recommendations`);
 
-//     return !!profile;
-//   } catch (error) {
-//     console.error("Error checking financial profile:", error);
-//     return false;
-//   }
-// }
+    if (!response.ok) {
+      console.log("Failed to fetch recommendations", response.status);
+      return null;
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error("Error fetching recommendations:", error);
+    return null;
+  }
+}
 
 export default async function FinancialProfilePage() {
   const currentUser = await getCurrentUser();
@@ -26,17 +30,24 @@ export default async function FinancialProfilePage() {
     redirect("/login");
   }
 
-  // const hasCompletedProfile = await checkUserProfile(currentUser.id);
+  // Get user data including hasCompletedFinancialProfile
+  const [userData] = await db
+    .select({
+      hasCompletedProfile: users.hasCompletedFinancialProfile,
+    })
+    .from(users)
+    .where(eq(users.id, currentUser.id))
+    .limit(1);
 
-  // // If the profile is already completed, redirect on the server side
-  // if (hasCompletedProfile) {
-  //   redirect("/dashboard");
-  // }
+  let recommendations = null;
+  if (userData.hasCompletedProfile) {
+    const data = await getRecommendations();
+    recommendations = data?.recommendations;
+  }
 
   return (
-    <>
-      {/* Main financial profile client component */}
-      <FinancialProfileClient />
-    </>
+    <Suspense fallback={<div>Loading...</div>}>
+      <FinancialProfileClient initialRecommendations={recommendations} />
+    </Suspense>
   );
 }

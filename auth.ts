@@ -92,7 +92,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   },
   cookies: {
     sessionToken: {
-      name: "authjs.session-token",
+      name: "authjs.session-token-honeycomb",
     },
   },
   session: {
@@ -165,7 +165,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 export const getCurrentUser = cache(async () => {
   const session = await auth();
   if (!session?.user) {
+    console.log("No session found");
+
     return null;
   }
+
   return session.user;
 });

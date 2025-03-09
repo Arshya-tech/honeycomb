@@ -36,20 +36,6 @@ export function FinancialProfileRecommendations({
       transition={{ duration: 0.5 }}
       className="space-y-8"
     >
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
-      >
-        <h1 className="text-primary mb-4 text-center text-3xl font-bold">
-          Your Financial Journey Begins!
-        </h1>
-        <p className="text-muted-foreground text-center text-lg">
-          Based on your profile, we&apos;ve created a personalized plan to help
-          you achieve your financial goals.
-        </p>
-      </motion.div>
-
       {/* Learning Path */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
