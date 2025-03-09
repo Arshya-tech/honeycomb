@@ -1,9 +1,9 @@
 import {
   BarChart2,
-  FileText,
   LayoutDashboard,
-  PiggyBank,
+  LineChart,
   Settings,
+  Trophy,
   Wallet,
 } from "lucide-react";
 
@@ -14,24 +14,24 @@ export const routes = [
     href: "/dashboard",
   },
   {
-    label: "Savings",
-    icon: PiggyBank,
-    href: "/savings",
+    label: "Challenges",
+    icon: Trophy,
+    href: "/challenges",
   },
   {
-    label: "Budget",
-    icon: BarChart2,
-    href: "/budget",
-  },
-  {
-    label: "Summary",
-    icon: FileText,
-    href: "/summary",
+    label: "Financial Profile",
+    icon: LineChart,
+    href: "/financial-profile",
   },
   {
     label: "Accounts",
     icon: Wallet,
     href: "/accounts",
+  },
+  {
+    label: "Budget",
+    icon: BarChart2,
+    href: "/budget",
   },
   {
     label: "Settings",
