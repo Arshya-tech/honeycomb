@@ -205,7 +205,7 @@ const ChallengesPage = () => {
         >
           <div className="flex items-center justify-between">
             <h3 className="font-semibold text-gray-700">Challenge Progress</h3>
-            <Badge className="bg-blue-100 text-blue-800">
+            <Badge className="bg-blue-100 px-2 text-sm font-semibold text-blue-600">
               {completionPercentage}% Complete
             </Badge>
           </div>
