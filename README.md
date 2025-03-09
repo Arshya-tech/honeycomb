@@ -1,6 +1,16 @@
-# AI-Powered Financial Literacy & Rewards Platform
+# Honeycomb: Financial Literacy and Education Platform
 
-This project is an AI-driven, gamified financial literacy platform that teaches smart money habits and rewards users with simulated cashback, achievement badges, and discounts on financial services. The platform leverages modern web technologies with a focus on personalization, gamification, and interactive financial tools.
+Honeycomb is an interactive platform designed to promote financial literacy and empower users to make informed financial decisions.
+
+## Our mission 
+*"Making Financial Literacy Engaging, Rewarding & Personalized"*
+
+## Features
+- **Personalized Onboarding**: Tailored onboarding process that adapts to individual user goals and financial knowledge level.
+- **Gamified Financial Challenges**: Fun, interactive weekly challenges to teach financial concepts while keeping users engaged.
+- **Smart Budgeting Tips**: AI-powered analysis of spending patterns with actionable recommendations for better financial decisions.
+- **Crypto-based Rewards System**: Users earn crypto tokens or cashback for completing challenges and reaching financial goals.
+- **AI-Based Expense Tracker & Budgeting Simulator**: Provides personalized financial insights, helping users manage expenses and set realistic budgeting goals.
 
 ## Project Structure
 
@@ -10,6 +20,7 @@ This project is an AI-driven, gamified financial literacy platform that teaches 
 - **config/**: Configuration files for navigation and site settings.
 - **PRD.md**: Product Requirements Document detailing the platform features and roadmap.
 - **.env**: Environment configuration file (do not commit sensitive data).
+
 
 ## How to Run the Project
 
