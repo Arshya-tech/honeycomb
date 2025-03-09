@@ -6,53 +6,38 @@ interface ProgressBarProps {
 }
 
 export function ProgressBar({ currentStep, totalSteps }: ProgressBarProps) {
-  // Create an array of steps for rendering individual step indicators
-  const steps = Array.from({ length: totalSteps }, (_, i) => i + 1);
+  // Calculate progress percentage
+  const progressPercentage = (currentStep / totalSteps) * 100;
 
   return (
-    <div className="fixed top-0 right-0 left-0 z-50 border-b bg-white/80 px-4 py-4 shadow-sm backdrop-blur-sm">
-      <div className="mx-auto max-w-4xl">
-        <div className="flex items-center justify-between">
-          <div className="flex flex-1 items-center">
-            {steps.map((step) => (
-              <div key={step} className="flex items-center">
-                <motion.div
-                  className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium ${
-                    step <= currentStep
-                      ? "bg-green-500 text-white"
-                      : "bg-gray-200 text-gray-500"
-                  }`}
-                  initial={{ scale: 0.8, opacity: 0.5 }}
-                  animate={{
-                    scale: step === currentStep ? 1.1 : 1,
-                    opacity: 1,
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {step}
-                </motion.div>
-
-                {step < totalSteps && (
-                  <div className="relative mx-2 h-1 w-16 bg-gray-200">
-                    <motion.div
-                      className="absolute inset-0 bg-green-500"
-                      initial={{ scaleX: 0 }}
-                      animate={{
-                        scaleX: step < currentStep ? 1 : 0,
-                      }}
-                      transition={{ duration: 0.5 }}
-                    />
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="text-sm font-medium text-gray-500">
-            Step {currentStep} of {totalSteps}
-          </div>
-        </div>
+    <motion.div
+      className="fixed top-0 right-0 z-50 h-full w-1"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 0.8 }}
+      transition={{ duration: 0.5 }}
+    >
+      {/* Ultra-minimal vertical progress bar */}
+      <div className="relative h-full w-full">
+        {/* Growing fill based on progress */}
+        <motion.div
+          className="absolute bottom-0 w-full bg-gradient-to-t from-purple-500 to-blue-500"
+          initial={{ height: "0%" }}
+          animate={{ height: `${progressPercentage}%` }}
+          transition={{ duration: 0.5 }}
+        />
       </div>
-    </div>
+
+      {/* Tiny floating step indicator that appears on hover */}
+      <motion.div
+        className="absolute top-4 right-3 flex h-6 w-6 items-center justify-center rounded-full bg-white/90 text-xs font-medium shadow-sm"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 0.9 }}
+        transition={{ duration: 0.3, delay: 0.2 }}
+      >
+        <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          {currentStep}/{totalSteps}
+        </span>
+      </motion.div>
+    </motion.div>
   );
 }

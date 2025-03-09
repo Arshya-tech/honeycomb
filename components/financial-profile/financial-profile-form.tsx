@@ -154,7 +154,10 @@ export function FinancialProfileForm({
                                   )}
                                 />
                               </FormControl>
-                              <FormLabel className="font-normal">
+                              <FormLabel
+                                htmlFor={currentStepData.id}
+                                className="font-normal"
+                              >
                                 <div className="font-medium">
                                   {option.label}
                                 </div>

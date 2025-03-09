@@ -20,7 +20,7 @@ export const SidebarUserProfile = ({ user }: SidebarUserProfileProps) => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="flex flex-col border-b p-6 2xl:p-8"
+      className="flex flex-col p-6 2xl:p-8"
     >
       <div className="flex items-start gap-x-4">
         <div className="border-border/40 relative size-16 shrink-0 overflow-hidden rounded-lg border shadow-sm transition-transform hover:scale-105">
@@ -33,8 +33,10 @@ export const SidebarUserProfile = ({ user }: SidebarUserProfileProps) => {
           />
         </div>
         <div className="flex max-w-full flex-col">
-          <h2 className="text-lg font-semibold tracking-tight">{user?.name}</h2>
-          <p className="text-muted-foreground/80 max-w-40 text-sm font-medium text-wrap break-words 2xl:max-w-[188px]">
+          <h2 className="text-lg font-semibold tracking-tight text-white">
+            {user?.name}
+          </h2>
+          <p className="text-muted-foreground/80 text-sm font-medium text-wrap break-words">
             {user?.email}
           </p>
         </div>

@@ -62,7 +62,7 @@
   --accent-foreground: #18181b; /* Dark text on accent yellow */
   --destructive: #ef4444; /* Red for errors */
   --destructive-foreground: #ff6f4f; /* Light text on destructive */
-  --border: #27272a; /* Dark subtle border */
+  --border: #e5e7eb; /* Dark subtle border */
   --input: #27272a; /* Dark input background */
   --ring: rgba(255, 215, 0, 0.3); /* Semi-transparent ring for focus */
   --chart-1: #ffd700; /* Chart color 1 */
@@ -103,7 +103,7 @@
   --accent-foreground: #18181b; /* Dark text on accent yellow */
   --destructive: #ef4444; /* Red for errors */
   --destructive-foreground: #fef2f2; /* Light text on destructive */
-  --border: #27272a; /* Dark subtle border */
+  --border: #e5e7eb; /* Dark subtle border */
   --input: #27272a; /* Dark input background */
   --ring: rgba(255, 215, 0, 0.3); /* Semi-transparent ring for focus */
   --chart-1: #ffd700; /* Chart color 1 */

@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const siteConfig = {
-  name: "WealthIdk",
-  description: "A platform for Idk",
+  name: "Honeycomb",
+  description: "A platform for UHHHHHH...",
   url: "https://tbd.com",
   ogImage: "https://tbd.com/og.jpg",
   links: {
