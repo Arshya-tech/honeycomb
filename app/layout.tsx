@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fredoka, Open_Sans } from "next/font/google";
+import { Open_Sans, Righteous } from "next/font/google";
 
 import { siteMetadata } from "@/config/site";
 
@@ -10,9 +10,10 @@ import { SessionProvider } from "next-auth/react";
 
 import { Toaster } from "@/components/ui/sonner";
 
-const fredoka = Fredoka({
+const righteous = Righteous({
   variable: "--font-heading",
   subsets: ["latin"],
+  weight: ["400"],
 });
 
 const openSans = Open_Sans({
@@ -33,7 +34,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fredoka.variable} ${openSans.variable} font-sans antialiased`}
+        className={`${righteous.variable} ${openSans.variable} font-sans antialiased`}
       >
         <SessionProvider session={session}>
           <Toaster richColors position="bottom-center" />

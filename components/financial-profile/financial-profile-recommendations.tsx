@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  Award,
-  BookOpen,
-  CheckCircle,
-  ChevronRight,
-  Target,
-} from "lucide-react";
+import { Award, BookOpen, ChevronRight, Target } from "lucide-react";
 import { motion } from "motion/react";
 
 import { Recommendation } from "@/lib/validations/financial-profile";
@@ -33,8 +27,8 @@ export function FinancialProfileRecommendations({
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="space-y-8 px-4 md:space-y-12 2xl:space-y-16"
+      transition={{ duration: 0.5, delay: 0.2 }}
+      className="space-y-6 md:space-y-10"
     >
       {/* Learning Path */}
       <motion.div
@@ -42,20 +36,30 @@ export function FinancialProfileRecommendations({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="bg-card border-border w-full rounded-lg border p-6"
+        className="group relative w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-100 p-4 shadow-md md:p-8"
       >
+        <div className="absolute top-0 left-0 h-[25%] w-[25%] rounded-r-full bg-orange-500/20 blur-2xl transition-all duration-1000 group-hover:bg-orange-500/5 lg:group-hover:h-[110%] lg:group-hover:w-[110%]" />
+
         <div className="flex items-center gap-3">
-          <div className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full">
-            <Target className="h-5 w-5" />
+          <div className="flex size-10 items-center justify-center rounded-full bg-orange-100 text-orange-600 shadow-sm">
+            <Target className="size-5" />
           </div>
-          <h2 className="text-2xl font-bold">Your Learning Path</h2>
+          <h2 className="text-2xl font-bold text-gray-800">
+            Your Learning Path
+          </h2>
         </div>
-        <div className="mt-4">
-          <h3 className="text-primary text-xl font-semibold">
-            {recommendations.learningPath.title}
-          </h3>
-          <p className="text-muted-foreground mt-2">
-            {recommendations.learningPath.description}
+        <div className="mt-4 h-2 w-40 bg-orange-500 md:mt-6" />
+        <div className="mt-4 md:mt-6">
+          <div className="">
+            <p className="text-muted-foreground text-xs font-bold">
+              YOUR TITLE
+            </p>
+            <h3 className="text-xl font-bold text-orange-600">
+              {recommendations.learningPath.title}
+            </h3>
+          </div>
+          <p className="mt-2.5 text-gray-700">
+            Goal: {recommendations.learningPath.description}
           </p>
         </div>
       </motion.div>
@@ -66,23 +70,29 @@ export function FinancialProfileRecommendations({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="bg-card border-border rounded-lg border p-6"
+        className="group relative w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-100 p-4 shadow-md md:p-8"
       >
+        <div className="absolute top-0 left-0 h-[25%] w-[25%] rounded-r-full bg-blue-500/20 blur-2xl transition-all duration-1000 group-hover:bg-blue-500/5 lg:group-hover:h-[110%] lg:group-hover:w-[110%]" />
+
         <div className="flex items-center gap-3">
-          <div className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full">
-            <Award className="h-5 w-5" />
+          <div className="flex size-10 items-center justify-center rounded-full bg-blue-100 text-blue-600 shadow-sm">
+            <Award className="size-5" />
           </div>
-          <h2 className="text-2xl font-bold">Your Challenges</h2>
+          <h2 className="text-2xl font-bold text-gray-800">Your Challenges</h2>
         </div>
-        <div className="mt-4 space-y-4">
+        <div className="mt-4 h-2 w-40 bg-blue-500 md:mt-6" />
+        <div className="mt-4 space-y-4 md:mt-6">
           {recommendations.challenges.map((challenge, index) => (
             <div
               key={index}
-              className="bg-background/50 flex items-start gap-3 rounded-md p-3"
+              className="flex items-start gap-3 rounded-lg bg-white p-4 shadow-sm transition-all hover:shadow-md"
             >
-              <CheckCircle className="text-muted-foreground mt-0.5 h-5 w-5" />
+              {/* <CheckCircle className="mt-0.5 size-5 text-blue-500" /> */}
+              <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-sm font-medium text-blue-600 shadow-sm">
+                {index + 1}
+              </div>
               <div>
-                <p className="font-medium">{challenge.title}</p>
+                <p className="font-medium text-gray-800">{challenge.title}</p>
               </div>
             </div>
           ))}
@@ -95,24 +105,27 @@ export function FinancialProfileRecommendations({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="from-card to-card/50 border-border/50 rounded-xl border bg-gradient-to-br p-8 shadow-lg"
+        className="group relative w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-100 p-4 shadow-md md:p-8"
       >
+        <div className="absolute top-0 left-0 h-[25%] w-[25%] rounded-r-full bg-emerald-500/20 blur-2xl transition-all duration-1000 group-hover:bg-emerald-500/5 lg:group-hover:h-[110%] lg:group-hover:w-[110%]" />
+
         <div className="flex items-center gap-3">
-          <div className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full">
-            <BookOpen className="h-5 w-5" />
+          <div className="flex size-10 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 shadow-sm">
+            <BookOpen className="size-5" />
           </div>
-          <h2 className="text-2xl font-bold">Financial Tips</h2>
+          <h2 className="text-2xl font-bold text-gray-800">Financial Tips</h2>
         </div>
-        <div className="mt-4 space-y-4">
+        <div className="mt-4 h-2 w-40 bg-emerald-500 md:mt-6" />
+        <div className="mt-4 space-y-4 md:mt-6">
           {recommendations.tips.slice(0, 5).map((tip, index) => (
             <div
               key={index}
-              className="bg-background/80 flex items-start gap-3 rounded-lg p-4 shadow-sm transition-colors"
+              className="flex items-start gap-3 rounded-lg bg-white p-4 shadow-sm transition-all hover:shadow-md"
             >
-              <div className="bg-primary/20 text-primary flex h-6 w-6 items-center justify-center rounded-full text-sm font-medium">
+              <div className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-100 text-sm font-medium text-emerald-600 shadow-sm">
                 {index + 1}
               </div>
-              <p>{tip}</p>
+              <p className="text-gray-700">{tip}</p>
             </div>
           ))}
         </div>
@@ -124,19 +137,27 @@ export function FinancialProfileRecommendations({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="from-card to-card/50 border-border/50 rounded-xl border bg-gradient-to-br p-8 shadow-lg"
+        className="group relative w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-100 p-4 shadow-md md:p-8"
       >
-        <h2 className="mb-4 text-2xl font-bold">Next Steps</h2>
-        <div className="space-y-4">
+        <div className="absolute top-0 left-0 h-[25%] w-[25%] rounded-r-full bg-purple-500/20 blur-2xl transition-all duration-1000 group-hover:bg-purple-500/5 lg:group-hover:h-[110%] lg:group-hover:w-[110%]" />
+
+        <div className="flex items-center gap-3">
+          <div className="flex size-10 items-center justify-center rounded-full bg-purple-100 text-purple-600 shadow-sm">
+            <Target className="size-5" />
+          </div>
+          <h2 className="text-2xl font-bold text-gray-800">Next Steps</h2>
+        </div>
+        <div className="mt-4 h-2 w-40 bg-purple-500 md:mt-6" />
+        <div className="mt-4 space-y-4 md:mt-6">
           {recommendations.nextSteps.slice(0, 3).map((step, index) => (
             <div
               key={index}
-              className="bg-background/80 flex items-start gap-3 rounded-lg p-4 shadow-sm transition-colors"
+              className="flex items-start gap-3 rounded-lg bg-white p-4 shadow-sm transition-all hover:shadow-md"
             >
-              <div className="bg-primary/20 text-primary flex h-6 w-6 items-center justify-center rounded-full text-sm font-medium">
+              <div className="flex h-6 w-6 items-center justify-center rounded-full bg-purple-100 text-sm font-medium text-purple-600 shadow-sm">
                 {index + 1}
               </div>
-              <p>{step}</p>
+              <p className="text-gray-700">{step}</p>
             </div>
           ))}
         </div>
@@ -148,12 +169,12 @@ export function FinancialProfileRecommendations({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="flex justify-center pt-8"
+        className="flex pt-6"
       >
         <Button
           onClick={onFinish}
           size="lg"
-          className="gap-2 px-8 py-6 text-lg font-semibold shadow-lg transition-transform hover:scale-105"
+          className="gap-2 bg-gradient-to-r from-orange-500 to-orange-600 px-8 py-6 text-lg font-semibold text-white shadow-lg transition-all hover:scale-105 hover:from-orange-600 hover:to-orange-700 hover:shadow-xl"
         >
           Continue to Dashboard
           <ChevronRight className="h-4 w-4" />

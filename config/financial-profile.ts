@@ -1,5 +1,3 @@
-import { FinancialProfileFormData } from "@/lib/validations/financial-profile";
-
 import { FormStep } from "./types";
 
 export const financialGoals = [

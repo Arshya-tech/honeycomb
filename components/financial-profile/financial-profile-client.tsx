@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
 import { toast } from "sonner";
@@ -102,16 +101,14 @@ export function FinancialProfileClient({
     router.push("/dashboard");
   };
 
-  const MotionLink = motion(Link);
-
   return (
     <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="from-background to-secondary/5 relative min-h-svh bg-gradient-to-b"
+      className="relative min-h-svh"
     >
-      <div className="absolute top-4 right-4">
+      {/* <div className="absolute top-4 right-4">
         <MotionLink
           href={"/dashboard"}
           initial={{ opacity: 0 }}
@@ -134,7 +131,7 @@ export function FinancialProfileClient({
             <polyline points="12 5 19 12 12 19" />
           </svg>
         </MotionLink>
-      </div>
+      </div> */}
 
       <ProgressBar
         currentStep={currentStep + 1}
@@ -148,7 +145,7 @@ export function FinancialProfileClient({
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-primary text-4xl font-bold"
+                className="text-secondary text-4xl font-bold tracking-tight"
               >
                 Let&apos;s Personalize Your Financial Journey
               </motion.h1>
@@ -156,7 +153,7 @@ export function FinancialProfileClient({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="text-muted-foreground mx-auto max-w-2xl"
+                className="text-muted-foreground/80 mx-auto max-w-2xl text-base leading-relaxed"
               >
                 Answer a few questions to help us understand your financial
                 goals and create a personalized plan for your success.
@@ -176,28 +173,31 @@ export function FinancialProfileClient({
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="space-y-12 py-24 md:space-y-16 2xl:space-y-20"
+            className="mx-auto max-w-5xl space-y-8"
           >
-            <motion.div
-              initial={{ filter: "blur(4px)" }}
-              animate={{ filter: "blur(0px)" }}
-              transition={{ duration: 1 }}
-              className="space-y-8 text-center md:space-y-12 2xl:space-x-16"
-            >
-              <h1 className="text-primary font-heading text-4xl font-bold xl:text-5xl">
-                Your Financial Profile is Complete!
-              </h1>
-              <p className="outline-primary/50 shadow-primary/50 bg-card mx-auto max-w-xl rounded-xl border p-4 text-balance shadow-[0_0_20px] outline-2 -outline-offset-8 transition-transform hover:-rotate-2 md:p-4">
+            <div className="space-y-2">
+              <motion.h1
+                initial={{ filter: "blur(6px)" }}
+                animate={{ filter: "blur(0px)" }}
+                transition={{ duration: 1 }}
+                className="text-background font-heading text-4xl font-bold xl:text-5xl"
+              >
+                Your Financial Profile
+              </motion.h1>
+              <motion.p
+                initial={{ filter: "blur(6px)" }}
+                animate={{ filter: "blur(0px)" }}
+                transition={{ duration: 1 }}
+                className="text-muted text-balance"
+              >
                 Based on your responses, we&apos;ve created personalized
                 recommendations to help you achieve your financial goals.
-              </p>
-            </motion.div>
-            <div className="bg-card mx-auto mt-32 max-w-5xl rounded-lg border p-6 shadow-sm">
-              <FinancialProfileRecommendations
-                recommendations={recommendations}
-                onFinish={handleFinish}
-              />
+              </motion.p>
             </div>
+            <FinancialProfileRecommendations
+              recommendations={recommendations}
+              onFinish={handleFinish}
+            />
           </motion.div>
         )}
       </div>
