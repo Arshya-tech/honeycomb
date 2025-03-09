@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
 import { toast } from "sonner";
@@ -95,13 +96,40 @@ export function FinancialProfileClient() {
     router.push("/dashboard");
   };
 
+  const MotionLink = motion(Link);
+
   return (
     <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="relative min-h-svh"
+      className="from-background to-secondary/5 relative min-h-svh bg-gradient-to-b"
     >
+      <div className="absolute top-4 right-4">
+        <MotionLink
+          href={"/dashboard"}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-muted-foreground hover:text-primary flex items-center gap-2 text-sm transition-colors"
+        >
+          Skip to Dashboard
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </MotionLink>
+      </div>
+
       <ProgressBar
         currentStep={currentStep + 1}
         totalSteps={financialProfileSteps.length}
@@ -109,14 +137,25 @@ export function FinancialProfileClient() {
 
       <div className="mx-auto w-full max-w-4xl px-4 py-16">
         {!isComplete ? (
-          <div className="relative">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-primary mb-8 text-center text-3xl font-bold"
-            >
-              {"Let's Personalize Your Financial Journey"}
-            </motion.h1>
+          <div className="relative space-y-8">
+            <div className="space-y-4 text-center">
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-primary text-4xl font-bold"
+              >
+                Let&apos;s Personalize Your Financial Journey
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-muted-foreground mx-auto max-w-2xl"
+              >
+                Answer a few questions to help us understand your financial
+                goals and create a personalized plan for your success.
+              </motion.p>
+            </div>
 
             <FinancialProfileForm
               currentStep={currentStep}
@@ -128,10 +167,27 @@ export function FinancialProfileClient() {
             />
           </div>
         ) : (
-          <FinancialProfileRecommendations
-            recommendations={recommendations}
-            onFinish={handleFinish}
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="space-y-8"
+          >
+            <div className="space-y-4 text-center">
+              <h1 className="text-primary text-4xl font-bold">
+                Your Financial Profile is Complete!
+              </h1>
+              <p className="text-muted-foreground mx-auto max-w-2xl">
+                Based on your responses, we&apos;ve created personalized
+                recommendations to help you achieve your financial goals.
+              </p>
+            </div>
+            <div className="bg-card rounded-lg border p-6 shadow-sm">
+              <FinancialProfileRecommendations
+                recommendations={recommendations}
+                onFinish={handleFinish}
+              />
+            </div>
+          </motion.div>
         )}
       </div>
     </motion.main>
