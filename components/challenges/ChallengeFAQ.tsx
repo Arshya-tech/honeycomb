@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { HelpCircle } from "lucide-react";
 
 import { FAQ } from "@/lib/data/challenges";
@@ -58,9 +59,9 @@ export function ChallengeFAQ({ faqs }: ChallengeFAQProps) {
       <div className="border-t bg-purple-50 p-4">
         <div className="flex items-center justify-center gap-2 text-purple-700">
           <HelpCircle className="h-4 w-4" />
-          <a href="/support" className="text-sm font-medium hover:underline">
+          <Link href="/support" className="text-sm font-medium hover:underline">
             Need more help? Contact Support
-          </a>
+          </Link>
         </div>
       </div>
     </div>

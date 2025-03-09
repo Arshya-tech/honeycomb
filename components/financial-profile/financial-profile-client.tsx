@@ -108,31 +108,6 @@ export function FinancialProfileClient({
       transition={{ duration: 0.5 }}
       className="relative min-h-svh"
     >
-      {/* <div className="absolute top-4 right-4">
-        <MotionLink
-          href={"/dashboard"}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-muted-foreground hover:text-primary flex items-center gap-2 text-sm transition-colors"
-        >
-          Skip to Dashboard
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="12 5 19 12 12 19" />
-          </svg>
-        </MotionLink>
-      </div> */}
-
       {!isComplete && (
         <ProgressBar
           currentStep={currentStep + 1}
@@ -143,23 +118,41 @@ export function FinancialProfileClient({
       <div className="mx-auto w-full px-4 py-16 2xl:py-24">
         {!isComplete ? (
           <div className="relative mx-auto max-w-4xl space-y-8">
-            <div className="space-y-4 text-center">
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-secondary text-4xl font-bold tracking-tight"
-              >
-                Let&apos;s Personalize Your Financial Journey
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-muted-foreground/80 mx-auto max-w-2xl text-base leading-relaxed"
-              >
-                Answer a few questions to help us understand your financial
-                goals and create a personalized plan for your success.
-              </motion.p>
+            <div className="space-y-6 text-center">
+              <div className="mx-auto w-fit rounded-2xl bg-gradient-to-br from-blue-100 to-purple-100 p-8 shadow-lg">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="mb-4 text-4xl"
+                >
+                  🎯
+                </motion.div>
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-4xl font-bold tracking-tight text-transparent"
+                >
+                  Let&apos;s Personalize Your Financial Journey
+                </motion.h1>
+              </div>
+              <div className="relative">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="mx-auto max-w-2xl rounded-xl bg-white/60 p-6 shadow-md backdrop-blur-sm"
+                >
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="text-muted-foreground/80 text-base leading-relaxed"
+                  >
+                    Answer a few questions to help us understand your financial
+                    goals and create a personalized plan for your success.
+                  </motion.p>
+                </motion.div>
+              </div>
             </div>
 
             <FinancialProfileForm

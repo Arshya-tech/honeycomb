@@ -14,7 +14,7 @@ export const DashboardGrid = ({ children }: DashboardGridProps) => {
       <div className="lg:col-span-2">{children}</div>
 
       {/* Right column - 1/3 width */}
-      <div className="space-y-6 rounded-xl border border-b-4 border-gray-200 bg-gray-100 p-4 md:p-6 2xl:p-8">
+      <div className="h-fit space-y-6 rounded-xl border border-b-4 border-gray-200 bg-gray-100 p-4 md:p-6 2xl:p-8">
         <SpendingBreakdown />
         <SavingsTipsCard />
       </div>

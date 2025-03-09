@@ -13,11 +13,6 @@ export const routes = [
     href: "/dashboard",
   },
   {
-    label: "Chat",
-    icon: MessageSquare,
-    href: "/chat",
-  },
-  {
     label: "Challenges",
     icon: Trophy,
     href: "/challenges",
@@ -26,6 +21,11 @@ export const routes = [
     label: "Financial Profile",
     icon: LineChart,
     href: "/financial-profile",
+  },
+  {
+    label: "Chat",
+    icon: MessageSquare,
+    href: "/chat",
   },
   // {
   //   label: "Accounts",

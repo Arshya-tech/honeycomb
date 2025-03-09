@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Award, Clock, Filter, Search, Trophy, Zap } from "lucide-react";
+import { Award, Filter, Search, Trophy, Zap } from "lucide-react";
 import { motion } from "motion/react";
 
 import {
@@ -18,10 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ChallengeAchievements } from "@/components/challenges/ChallengeAchievements";
 import { ChallengeDetails } from "@/components/challenges/ChallengeDetails";
-import { ChallengeFAQ } from "@/components/challenges/ChallengeFAQ";
 import { ChallengeGrid } from "@/components/challenges/ChallengeGrid";
-import { ChallengeLeaderboard } from "@/components/challenges/ChallengeLeaderboard";
-import { ChallengeRewards } from "@/components/challenges/ChallengeRewards";
 
 const ChallengesPage = () => {
   const [activeTab, setActiveTab] = useState("active");
@@ -112,14 +109,12 @@ const ChallengesPage = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-gradient-to-r from-blue-600 to-blue-700 p-6 text-white md:p-10"
+        className="bg-gradient-to-r from-yellow-600 to-yellow-700 p-6 text-white md:p-10"
       >
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold md:text-4xl">
-                Financial Challenges
-              </h1>
+              <h1 className="text-3xl font-bold md:text-4xl">Challenges</h1>
               <p className="max-w-2xl text-blue-100">
                 Complete challenges to earn points, unlock rewards, and improve
                 your financial skills!
@@ -532,9 +527,9 @@ const ChallengesPage = () => {
         </div>
 
         {/* FAQ Section */}
-        <div id="faq-section" className="mt-12">
+        {/* <div id="faq-section" className="mt-12">
           <ChallengeFAQ faqs={FAQS} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

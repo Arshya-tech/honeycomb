@@ -13,9 +13,10 @@ interface GamificationHubProps {
 
 export const GamificationHub = ({ challenges }: GamificationHubProps) => {
   return (
-    <div className="border-primary/20 bg-primary/5 rounded-xl border border-b-4 p-4 md:p-8">
-      <h2 className="font-heading mb-6 text-2xl font-bold text-yellow-700">
-        🎮 Gamification Hub
+    <div className="rounded-2xl border-2 border-rose-300 bg-gradient-to-br from-rose-50 to-rose-100/50 p-6 shadow-lg md:p-8">
+      <h2 className="font-heading mb-8 flex items-center gap-3 text-2xl font-bold text-rose-700">
+        <span className="rounded-xl bg-rose-200 p-2 shadow-sm">🎮</span>
+        Gamification Hub
       </h2>
       <Challenges challenges={challenges} />
     </div>
