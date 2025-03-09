@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { AnimatedHoney } from "@/components/auth/animated-honey";
+
 export default function AuthLayout({
   children,
 }: {
@@ -11,21 +13,7 @@ export default function AuthLayout({
       <div className="my-12 flex w-full flex-col items-center justify-center space-y-6 overflow-x-hidden px-4 py-12 md:my-20 md:space-y-10 lg:px-8 xl:w-1/2">
         {/* Header Section */}
         <div className="relative space-y-4 text-center">
-          <Image
-            src="/assets/honey.webp"
-            alt="Honey"
-            width={80}
-            height={80}
-            className="absolute -top-8 left-0 size-16 -rotate-[25deg] transition-transform select-none hover:-rotate-12 md:-top-12 md:-left-20 md:size-20 2xl:-left-24"
-          />
-
-          <Image
-            src="/assets/honey.webp"
-            alt="Honey"
-            width={80}
-            height={80}
-            className="absolute -right-20 -bottom-12 size-20 rotate-[25deg] transition-transform select-none hover:rotate-12 max-md:hidden"
-          />
+          <AnimatedHoney />
           <div className="group inline-flex items-center gap-3 transition">
             <h1 className="font-heading font-bold md:text-5xl">
               Welcome to <br className="md:hidden" />
