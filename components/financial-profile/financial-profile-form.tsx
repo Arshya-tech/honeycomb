@@ -121,11 +121,10 @@ export function FinancialProfileForm({
                             <FormControl>
                               <Checkbox
                                 checked={(field.value || []).includes(
-                                  // @ts-ignore - field.value is string[] for multi-select
+                                  // @ts-expect-error - field.value is string[] for multi-select
                                   option.id,
                                 )}
                                 onCheckedChange={(checked: boolean) => {
-                                  // @ts-ignore - field.value is string[] for multi-select
                                   const currentValue = field.value || [];
                                   if (checked) {
                                     field.onChange([
@@ -134,7 +133,7 @@ export function FinancialProfileForm({
                                     ]);
                                   } else {
                                     field.onChange(
-                                      // @ts-ignore - currentValue is string[] for multi-select
+                                      // @ts-expect-error - currentValue is string[] for multi-select
                                       currentValue.filter(
                                         (value: string) => value !== option.id,
                                       ),
