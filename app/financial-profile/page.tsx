@@ -6,17 +6,19 @@ import { eq } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { users } from "@/lib/db/schema";
 import { FinancialProfileClient } from "@/components/financial-profile/financial-profile-client";
+import { GET } from "@/app/api/financial-profile/recommendations/route";
 
 async function getRecommendations() {
   try {
-    const response = await fetch(`/api/financial-profile/recommendations`);
+    const response = await GET();
+    const data = await response.json();
 
     if (!response.ok) {
       console.log("Failed to fetch recommendations", response.status);
       return null;
     }
 
-    return response.json();
+    return data;
   } catch (error) {
     console.error("Error fetching recommendations:", error);
     return null;

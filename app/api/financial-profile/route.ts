@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/auth";
+import { getCurrentUser } from "@/auth";
 import { eq } from "drizzle-orm";
 
 import { learningPaths } from "@/config/financial-profile";
@@ -9,9 +9,9 @@ import { financialProfileSchema } from "@/lib/validations/financial-profile";
 
 export async function POST(req: NextRequest) {
   try {
-    const session = await auth();
+    const currentUser = await getCurrentUser();
 
-    if (!session?.user?.id) {
+    if (!currentUser?.id) {
       return NextResponse.json(
         { error: "You must be logged in to create a financial profile" },
         { status: 401 },
@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
       .insert(financialProfiles)
       .values({
         id: crypto.randomUUID(),
-        userId: session.user.id,
+        userId: currentUser.id,
         employmentStatus,
         annualIncome,
         financialGoal,
@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
         hasCompletedFinancialProfile: 1,
         points: 100, // Award 100 points for completing the financial profile
       })
-      .where(eq(users.id, session.user.id));
+      .where(eq(users.id, currentUser.id));
 
     return NextResponse.json(
       {
@@ -98,9 +98,9 @@ export async function POST(req: NextRequest) {
 
 export async function GET() {
   try {
-    const session = await auth();
+    const currentUser = await getCurrentUser();
 
-    if (!session?.user?.id) {
+    if (!currentUser?.id) {
       return NextResponse.json(
         { error: "You must be logged in to view your financial profile" },
         { status: 401 },
@@ -111,7 +111,7 @@ export async function GET() {
     const [financialProfile] = await db
       .select()
       .from(financialProfiles)
-      .where(eq(financialProfiles.userId, session.user.id))
+      .where(eq(financialProfiles.userId, currentUser.id))
       .limit(1);
 
     if (!financialProfile) {
