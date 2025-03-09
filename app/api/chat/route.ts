@@ -5,7 +5,6 @@ import { eq } from "drizzle-orm";
 import { generateFinancialAdvice } from "@/lib/ai/financial-advice";
 import { db } from "@/lib/db";
 import { financialProfiles } from "@/lib/db/schema";
-import { Message } from "@/components/chat/main/message";
 
 export async function POST(request: NextRequest) {
   try {

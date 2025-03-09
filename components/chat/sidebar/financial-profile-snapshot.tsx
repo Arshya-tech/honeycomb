@@ -51,7 +51,7 @@ export const FinancialProfileSnapshot = ({
                 ${annualIncome.toLocaleString()}
               </p>
             </div>
-            <div>
+            <div className="text-right">
               <p className="text-xs text-gray-500">Monthly Expenses</p>
               <p className="text-sm font-medium">
                 ${monthlyExpenses.toLocaleString()}

@@ -1,6 +1,6 @@
 "use client";
 
-import { Trophy, Users } from "lucide-react";
+import { Trophy } from "lucide-react";
 
 import { LeaderboardUser } from "@/lib/data/challenges";
 

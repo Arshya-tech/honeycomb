@@ -151,7 +151,7 @@ export const ChatSidebar = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="flex h-full w-full flex-col gap-6 overflow-y-auto bg-[#f5f8ff] p-6"
+      className="flex h-full w-full flex-col gap-6 overflow-y-auto bg-[#f5f8ff] p-4 pt-16 md:p-6 md:pt-6"
     >
       <FinancialProfileSnapshot
         employmentStatus={mockUserData.employmentStatus}

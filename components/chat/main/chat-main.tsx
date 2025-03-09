@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 import { ChatInput } from "./chat-input";
 import { ChatThread } from "./chat-thread";
-import { MessageContentType, Message as MessageType } from "./message";
+import { Message as MessageType } from "./message";
 
 // Simple function to generate unique IDs
 const generateId = () => {
@@ -244,7 +244,7 @@ export const ChatMain = () => {
         onPaymentChange={handlePaymentChange}
       />
 
-      <div className="border-primary/10 rounded-t-3xl border-t p-5 shadow-inner">
+      <div className="border-primary/10 rounded-t-3xl border-t p-3 shadow-inner md:p-5">
         <ChatInput
           onSendMessage={handleSendMessage}
           isLoading={isLoading}

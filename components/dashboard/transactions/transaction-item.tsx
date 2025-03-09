@@ -27,7 +27,6 @@ export const TransactionItem = ({
   time,
   location,
   amount,
-  cashback,
   index,
 }: TransactionItemProps) => {
   return (
