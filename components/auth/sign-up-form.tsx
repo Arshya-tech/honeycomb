@@ -74,7 +74,7 @@ export function SignUpForm() {
         }
 
         toast.success("Account created successfully!");
-        window.location.href = "/dashboard";
+        window.location.href = "/financial-profile";
       });
     } catch (err) {
       toast.error(

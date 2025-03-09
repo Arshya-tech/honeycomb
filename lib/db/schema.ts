@@ -9,6 +9,10 @@ export const users = sqliteTable("users", {
   password: text("password"),
   role: text("role").default("user"),
   createdAt: integer("createdAt"),
+  points: integer("points").default(0),
+  hasCompletedFinancialProfile: integer("hasCompletedFinancialProfile").default(
+    0,
+  ),
 });
 
 export const accounts = sqliteTable("accounts", {
@@ -43,4 +47,22 @@ export const verificationTokens = sqliteTable("verificationToken", {
   identifier: text("identifier").notNull(),
   token: text("token").notNull(),
   expires: integer("expires", { mode: "timestamp" }).notNull(),
+});
+
+export const financialProfiles = sqliteTable("financialProfiles", {
+  id: text("id").primaryKey(),
+  userId: text("userId")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  employmentStatus: text("employmentStatus").notNull(),
+  annualIncome: text("annualIncome").notNull(),
+  financialGoal: text("financialGoal").notNull(),
+  riskTolerance: text("riskTolerance").notNull(),
+  knowledgeLevel: text("knowledgeLevel").notNull(),
+  debtAmount: text("debtAmount").notNull(),
+  savingsAmount: text("savingsAmount").notNull(),
+  monthlyExpenses: text("monthlyExpenses").notNull(),
+  learningPath: text("learningPath").notNull(),
+  createdAt: integer("createdAt", { mode: "timestamp" }).notNull(),
+  updatedAt: integer("updatedAt", { mode: "timestamp" }),
 });
