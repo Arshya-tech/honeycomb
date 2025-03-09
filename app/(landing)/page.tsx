@@ -139,7 +139,7 @@ export default function Home() {
                 href="/sign-in"
                 className="bg-foreground hover:text-background flex items-center gap-2 rounded-xl border px-4 py-2 font-medium text-amber-700 transition-colors hover:bg-amber-500"
               >
-                Login
+                sign-in
               </Link>
             </div>
           </div>

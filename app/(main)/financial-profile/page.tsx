@@ -28,7 +28,7 @@ export default async function FinancialProfilePage() {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
-    redirect("/login");
+    redirect("/sign-in");
   }
 
   // Get user data including hasCompletedFinancialProfile

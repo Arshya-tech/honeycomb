@@ -43,7 +43,7 @@ const DashboardPage = async () => {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
-    redirect("/login");
+    redirect("/sign-in");
   }
 
   const [userStats] = await db
