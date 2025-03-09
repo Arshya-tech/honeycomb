@@ -1,10 +1,9 @@
 import {
-  BarChart2,
   LayoutDashboard,
   LineChart,
+  MessageSquare,
   Settings,
   Trophy,
-  Wallet,
 } from "lucide-react";
 
 export const routes = [
@@ -12,6 +11,11 @@ export const routes = [
     label: "Dashboard",
     icon: LayoutDashboard,
     href: "/dashboard",
+  },
+  {
+    label: "Chat",
+    icon: MessageSquare,
+    href: "/chat",
   },
   {
     label: "Challenges",
@@ -23,16 +27,16 @@ export const routes = [
     icon: LineChart,
     href: "/financial-profile",
   },
-  {
-    label: "Accounts",
-    icon: Wallet,
-    href: "/accounts",
-  },
-  {
-    label: "Budget",
-    icon: BarChart2,
-    href: "/budget",
-  },
+  // {
+  //   label: "Accounts",
+  //   icon: Wallet,
+  //   href: "/accounts",
+  // },
+  // {
+  //   label: "Budget",
+  //   icon: BarChart2,
+  //   href: "/budget",
+  // },
   {
     label: "Settings",
     icon: Settings,

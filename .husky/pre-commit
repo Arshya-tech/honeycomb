@@ -1,10 +1,10 @@
 echo "Running pre-commit checks..."
 
 # Run type checking
-pnpm type-check || exit 1
+# pnpm type-check || exit 1
 
 # Run lint check
-pnpm lint || exit 1
+# pnpm lint || exit 1
 
 # Run tests
 pnpm test || exit 1

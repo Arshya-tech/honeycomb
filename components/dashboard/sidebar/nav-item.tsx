@@ -52,10 +52,7 @@ export const SidebarNavItem = ({
           animate={{ scaleY: isActive ? 1 : 0 }}
           transition={{ duration: 0.2 }}
         />
-        <motion.div
-          whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-          transition={{ duration: 0.5 }}
-        >
+        <motion.div transition={{ duration: 0.5 }}>
           <Icon className="mr-3" />
         </motion.div>
         <span>{label}</span>
