@@ -135,7 +135,7 @@ export const Message = ({
             </div>
           </div>
         ) : (
-          <p className="text-base">{message.content}</p>
+          <p className="text-base max-md:text-sm">{message.content}</p>
         )}
       </div>
 

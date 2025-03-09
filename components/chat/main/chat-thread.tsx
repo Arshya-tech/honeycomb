@@ -31,7 +31,7 @@ export const ChatThread = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="flex min-h-[calc(100vh-120px)] flex-1 flex-col gap-4 overflow-y-auto p-3 sm:gap-8 sm:p-6"
+      className="flex min-h-[calc(100svh-320px)] flex-1 flex-col-reverse gap-4 overflow-y-auto p-3 sm:gap-8 sm:p-6"
     >
       {messages.length === 0 ? (
         <div className="flex h-full flex-col items-center justify-center">
