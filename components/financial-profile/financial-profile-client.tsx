@@ -141,9 +141,9 @@ export function FinancialProfileClient({
         totalSteps={financialProfileSteps.length}
       />
 
-      <div className="mx-auto w-full max-w-4xl px-4 py-16">
+      <div className="mx-auto w-full px-4 py-16 2xl:py-24">
         {!isComplete ? (
-          <div className="relative space-y-8">
+          <div className="relative mx-auto max-w-4xl space-y-8">
             <div className="space-y-4 text-center">
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
@@ -176,18 +176,23 @@ export function FinancialProfileClient({
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="space-y-8"
+            className="space-y-12 py-24 md:space-y-16 2xl:space-y-20"
           >
-            <div className="space-y-4 text-center">
-              <h1 className="text-primary text-4xl font-bold">
+            <motion.div
+              initial={{ filter: "blur(4px)" }}
+              animate={{ filter: "blur(0px)" }}
+              transition={{ duration: 1 }}
+              className="space-y-8 text-center md:space-y-12 2xl:space-x-16"
+            >
+              <h1 className="text-primary font-heading text-4xl font-bold xl:text-5xl">
                 Your Financial Profile is Complete!
               </h1>
-              <p className="text-muted-foreground mx-auto max-w-2xl">
+              <p className="outline-primary/50 shadow-primary/50 bg-card mx-auto max-w-xl rounded-xl border p-4 text-balance shadow-[0_0_20px] outline-2 -outline-offset-8 transition-transform hover:-rotate-2 md:p-4">
                 Based on your responses, we&apos;ve created personalized
                 recommendations to help you achieve your financial goals.
               </p>
-            </div>
-            <div className="bg-card rounded-lg border p-6 shadow-sm">
+            </motion.div>
+            <div className="bg-card mx-auto mt-32 max-w-5xl rounded-lg border p-6 shadow-sm">
               <FinancialProfileRecommendations
                 recommendations={recommendations}
                 onFinish={handleFinish}

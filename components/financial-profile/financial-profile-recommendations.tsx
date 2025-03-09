@@ -34,14 +34,15 @@ export function FinancialProfileRecommendations({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="space-y-8"
+      className="space-y-8 px-4 md:space-y-12 2xl:space-y-16"
     >
       {/* Learning Path */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-        className="bg-card border-border rounded-lg border p-6"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="bg-card border-border w-full rounded-lg border p-6"
       >
         <div className="flex items-center gap-3">
           <div className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full">
@@ -61,9 +62,10 @@ export function FinancialProfileRecommendations({
 
       {/* Challenges */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         className="bg-card border-border rounded-lg border p-6"
       >
         <div className="flex items-center gap-3">
@@ -89,10 +91,11 @@ export function FinancialProfileRecommendations({
 
       {/* Tips */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4 }}
-        className="bg-card border-border rounded-lg border p-6"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="from-card to-card/50 border-border/50 rounded-xl border bg-gradient-to-br p-8 shadow-lg"
       >
         <div className="flex items-center gap-3">
           <div className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full">
@@ -104,7 +107,7 @@ export function FinancialProfileRecommendations({
           {recommendations.tips.slice(0, 5).map((tip, index) => (
             <div
               key={index}
-              className="bg-background/50 flex items-start gap-3 rounded-md p-3"
+              className="bg-background/80 flex items-start gap-3 rounded-lg p-4 shadow-sm transition-colors"
             >
               <div className="bg-primary/20 text-primary flex h-6 w-6 items-center justify-center rounded-full text-sm font-medium">
                 {index + 1}
@@ -117,17 +120,18 @@ export function FinancialProfileRecommendations({
 
       {/* Next Steps */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-        className="bg-card border-border rounded-lg border p-6"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="from-card to-card/50 border-border/50 rounded-xl border bg-gradient-to-br p-8 shadow-lg"
       >
         <h2 className="mb-4 text-2xl font-bold">Next Steps</h2>
         <div className="space-y-4">
           {recommendations.nextSteps.slice(0, 3).map((step, index) => (
             <div
               key={index}
-              className="bg-background/50 flex items-start gap-3 rounded-md p-3"
+              className="bg-background/80 flex items-start gap-3 rounded-lg p-4 shadow-sm transition-colors"
             >
               <div className="bg-primary/20 text-primary flex h-6 w-6 items-center justify-center rounded-full text-sm font-medium">
                 {index + 1}
@@ -140,12 +144,17 @@ export function FinancialProfileRecommendations({
 
       {/* Continue to Dashboard Button */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6 }}
-        className="flex justify-center pt-4"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="flex justify-center pt-8"
       >
-        <Button onClick={onFinish} size="lg" className="gap-2">
+        <Button
+          onClick={onFinish}
+          size="lg"
+          className="gap-2 px-8 py-6 text-lg font-semibold shadow-lg transition-transform hover:scale-105"
+        >
           Continue to Dashboard
           <ChevronRight className="h-4 w-4" />
         </Button>
