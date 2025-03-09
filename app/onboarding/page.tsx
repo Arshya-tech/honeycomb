@@ -103,7 +103,7 @@ const ONBOARDING_STEPS = [
               title: "Savings Hero",
               desc: "Save $100 this month",
               icon: "🏦",
-              color: "amber",
+              color: "green",
             },
             {
               title: "Knowledge Seeker",
@@ -264,7 +264,7 @@ const ONBOARDING_STEPS = [
               title: "Gift Cards",
               desc: "Redeem points for gift cards",
               icon: "🎁",
-              color: "amber",
+              color: "rose",
             },
             {
               title: "Premium Features",

@@ -2,10 +2,12 @@
 
 Honeycomb is an interactive platform designed to promote financial literacy and empower users to make informed financial decisions.
 
-## Our mission 
-*"Making Financial Literacy Engaging, Rewarding & Personalized"*
+## Our mission
+
+_"Making Financial Literacy Engaging, Rewarding & Personalized"_
 
 ## Features
+
 - **Personalized Onboarding**: Tailored onboarding process that adapts to individual user goals and financial knowledge level.
 - **Gamified Financial Challenges**: Fun, interactive weekly challenges to teach financial concepts while keeping users engaged.
 - **Smart Budgeting Tips**: AI-powered analysis of spending patterns with actionable recommendations for better financial decisions.
@@ -20,7 +22,6 @@ Honeycomb is an interactive platform designed to promote financial literacy and 
 - **config/**: Configuration files for navigation and site settings.
 - **PRD.md**: Product Requirements Document detailing the platform features and roadmap.
 - **.env**: Environment configuration file (do not commit sensitive data).
-
 
 ## How to Run the Project
 

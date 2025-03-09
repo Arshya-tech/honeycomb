@@ -119,34 +119,46 @@ export function FinancialProfileClient({
         {!isComplete ? (
           <div className="relative mx-auto max-w-4xl space-y-8">
             <div className="space-y-6 text-center">
-              <div className="mx-auto w-fit rounded-2xl bg-gradient-to-br from-blue-100 to-purple-100 p-8 shadow-lg">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="mb-4 text-4xl"
-                >
-                  🎯
-                </motion.div>
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-4xl font-bold tracking-tight text-transparent"
-                >
-                  Let&apos;s Personalize Your Financial Journey
-                </motion.h1>
-              </div>
-              <div className="relative">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="relative mx-auto w-fit"
+              >
+                <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_120%,rgba(251,191,36,0.15),transparent_70%)]" />
+                <div className="rounded-2xl border-2 border-yellow-200 bg-gradient-to-br from-yellow-50/90 via-yellow-100/80 to-yellow-50/90 p-8 shadow-xl backdrop-blur-sm">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="mb-4 flex justify-center"
+                  >
+                    <span className="rounded-xl bg-gradient-to-br from-yellow-100 to-yellow-200 p-3 text-4xl shadow-md">
+                      🍯
+                    </span>
+                  </motion.div>
+                  <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="relative bg-gradient-to-r from-yellow-600 to-yellow-700 bg-clip-text text-4xl font-bold tracking-tight text-transparent"
+                  >
+                    Let&apos;s Personalize Your Financial Journey
+                  </motion.h1>
+                </div>
+              </motion.div>
+              <div className="relative mt-8">
+                <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_0%,rgba(251,191,36,0.1),transparent_60%)]" />
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="mx-auto max-w-2xl rounded-xl bg-white/60 p-6 shadow-md backdrop-blur-sm"
+                  className="relative mx-auto max-w-2xl overflow-hidden rounded-xl border-2 border-yellow-100 bg-white/90 p-6 shadow-md backdrop-blur-sm"
                 >
+                  <div className="absolute -top-8 -right-8 h-16 w-16 rotate-12 rounded-xl bg-yellow-100/50 blur-2xl" />
+                  <div className="absolute -bottom-8 -left-8 h-16 w-16 -rotate-12 rounded-xl bg-yellow-100/50 blur-2xl" />
                   <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="text-muted-foreground/80 text-base leading-relaxed"
+                    className="text-muted-foreground/90 relative z-10 text-base leading-relaxed"
                   >
                     Answer a few questions to help us understand your financial
                     goals and create a personalized plan for your success.

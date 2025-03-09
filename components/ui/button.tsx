@@ -5,26 +5,26 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-[color,box-shadow] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none hover:scale-[1.02] focus-visible:scale-[1.02] focus-visible:ring-2 focus-visible:ring-yellow-200 aria-invalid:ring-red-200 dark:aria-invalid:ring-red-300/40 aria-invalid:border-red-300",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+          "bg-gradient-to-r from-yellow-500 to-yellow-600 text-white shadow-md hover:shadow-lg hover:from-yellow-400 hover:to-yellow-500",
         destructive:
-          "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40",
+          "bg-gradient-to-r from-red-500 to-red-600 text-white shadow-md hover:shadow-lg hover:from-red-400 hover:to-red-500",
         outline:
-          "border border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
+          "border-2 border-yellow-200 bg-white text-yellow-700 shadow-sm hover:border-yellow-300 hover:bg-yellow-50",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800 shadow-sm hover:from-yellow-200 hover:to-yellow-300",
+        ghost: "text-yellow-700 hover:bg-yellow-50 hover:text-yellow-800",
+        link: "text-yellow-600 underline-offset-4 hover:text-yellow-700 hover:underline",
       },
       size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-        icon: "size-9",
+        default: "h-10 px-5 py-2.5 has-[>svg]:px-4",
+        sm: "h-9 rounded-lg gap-1.5 px-4 has-[>svg]:px-3",
+        lg: "h-11 rounded-xl px-7 has-[>svg]:px-5",
+        icon: "size-10",
       },
     },
     defaultVariants: {
@@ -55,32 +55,49 @@ function Button({
       className={cn(
         "cursor-pointer",
         buttonVariants({ variant, size, className }),
-        isLoading && "cursor-wait opacity-50",
+        isLoading && "cursor-wait opacity-70",
       )}
       disabled={isLoading}
       {...props}
     >
       {isLoading ? (
-        <svg
-          className="size-4 animate-spin"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <circle
-            className="opacity-25"
-            cx="12"
-            cy="12"
-            r="10"
-            stroke="currentColor"
-            strokeWidth="4"
-          />
-          <path
-            className="opacity-75"
-            fill="currentColor"
-            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-          />
-        </svg>
+        <div className="flex items-center gap-2">
+          <svg
+            className="size-4 animate-[spin_0.6s_ease-in-out_infinite]"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 3C16.9706 3 21 7.02944 21 12"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              className="opacity-40"
+            />
+            <path
+              d="M21 12C21 16.9706 16.9706 21 12 21"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              className="opacity-60"
+            />
+            <path
+              d="M12 21C7.02944 21 3 16.9706 3 12"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              className="opacity-80"
+            />
+            <path
+              d="M3 12C3 7.02944 7.02944 3 12 3"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+          </svg>
+          <span>Loading...</span>
+        </div>
       ) : (
         children
       )}

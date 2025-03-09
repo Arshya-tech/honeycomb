@@ -77,23 +77,29 @@ export function FinancialProfileForm({
                           transition={{ duration: 0.3, delay: 0.1 }}
                         >
                           <div className="group relative">
-                            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 blur transition-opacity group-hover:opacity-25" />
-                            <div className="relative flex items-center space-x-3 rounded-xl border-2 border-blue-100 bg-white p-5 shadow-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-md">
-                              <RadioGroupItem
-                                value={option.id}
-                                className="size-5"
-                              />
-                              <FormLabel className="cursor-pointer font-normal">
-                                <div className="font-medium">
-                                  {option.label}
-                                </div>
-                                {option.description && (
-                                  <div className="text-muted-foreground mt-1 text-sm">
-                                    {option.description}
+                            <FormLabel
+                              htmlFor={option.id}
+                              className="relative block cursor-pointer transition-colors duration-300"
+                            >
+                              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-yellow-400/20 to-yellow-500/20 opacity-0 blur transition-opacity group-hover:opacity-50" />
+                              <div className="relative flex items-center space-x-3 rounded-2xl border-2 border-yellow-200 bg-white/95 p-5 shadow-sm backdrop-blur-sm transition-colors duration-300 hover:border-yellow-300 hover:bg-white">
+                                <RadioGroupItem
+                                  id={option.id}
+                                  value={option.id}
+                                  className="size-5"
+                                />
+                                <div>
+                                  <div className="font-medium">
+                                    {option.label}
                                   </div>
-                                )}
-                              </FormLabel>
-                            </div>
+                                  {option.description && (
+                                    <div className="text-muted-foreground mt-1 text-sm">
+                                      {option.description}
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            </FormLabel>
                           </div>
                         </motion.div>
                       ),
@@ -123,7 +129,7 @@ export function FinancialProfileForm({
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.3, delay: 0.1 }}
                         >
-                          <FormItem
+                          <div
                             className="group relative cursor-pointer"
                             onClick={() => {
                               const currentValue = field.value || [];
@@ -143,32 +149,35 @@ export function FinancialProfileForm({
                               }
                             }}
                           >
-                            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 blur transition-opacity group-hover:opacity-25" />
-                            <div className="relative flex items-center space-x-4 rounded-xl border-2 border-blue-100 bg-white p-5 shadow-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-md">
-                              <FormControl>
-                                <Checkbox
-                                  className="size-5"
-                                  checked={(field.value || []).includes(
-                                    // @ts-expect-error - field.value is string[] for multi-select
-                                    option.id,
-                                  )}
-                                />
-                              </FormControl>
-                              <FormLabel
-                                htmlFor={currentStepData.id}
-                                className="font-normal"
-                              >
-                                <div className="font-medium">
-                                  {option.label}
-                                </div>
-                                {option.description && (
-                                  <div className="text-muted-foreground mt-1 text-sm">
-                                    {option.description}
+                            <FormLabel
+                              htmlFor={option.id}
+                              className="relative block cursor-pointer transition-colors duration-300"
+                            >
+                              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-yellow-400/20 to-yellow-500/20 opacity-0 blur transition-opacity group-hover:opacity-50" />
+                              <div className="relative flex items-center space-x-3 rounded-2xl border-2 border-yellow-200 bg-white/95 p-5 shadow-sm backdrop-blur-sm transition-colors duration-300 hover:border-yellow-300 hover:bg-white">
+                                <FormControl>
+                                  <Checkbox
+                                    id={option.id}
+                                    className="size-5"
+                                    checked={(field.value || []).includes(
+                                      // @ts-expect-error - field.value is string[] for multi-select
+                                      option.id,
+                                    )}
+                                  />
+                                </FormControl>
+                                <div>
+                                  <div className="font-medium">
+                                    {option.label}
                                   </div>
-                                )}
-                              </FormLabel>
-                            </div>
-                          </FormItem>
+                                  {option.description && (
+                                    <div className="text-muted-foreground mt-1 text-sm">
+                                      {option.description}
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            </FormLabel>
+                          </div>
                         </motion.div>
                       ),
                     )}
@@ -190,7 +199,7 @@ export function FinancialProfileForm({
                 <FormControl>
                   <Textarea
                     placeholder={currentStepData.placeholder}
-                    className="h-32 resize-none rounded-xl border-2 border-blue-100 bg-white p-4 shadow-sm focus:border-blue-200 focus:ring-2 focus:ring-blue-100"
+                    className="h-32 resize-none rounded-2xl border-2 border-yellow-200 bg-white/95 p-4 shadow-sm backdrop-blur-sm transition-colors duration-300 hover:border-yellow-300 focus:border-yellow-300 focus:bg-white focus:ring-2 focus:ring-yellow-100"
                     {...field}
                   />
                 </FormControl>
@@ -212,19 +221,23 @@ export function FinancialProfileForm({
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.3 }}
-      className="rounded-2xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-purple-50 p-8 shadow-lg"
+      className="relative rounded-2xl border-2 border-yellow-200 bg-gradient-to-br from-yellow-50/80 via-yellow-100/50 to-yellow-50/80 p-8 shadow-xl"
     >
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_120%,rgba(251,191,36,0.1),transparent_80%)]" />
       <div className="mb-8">
         <div className="mb-4 flex items-center gap-3">
-          <div className="rounded-xl bg-blue-100 p-2.5 shadow-sm">
-            <span className="text-2xl">✨</span>
+          <div className="rounded-xl bg-gradient-to-br from-yellow-100 to-yellow-200 p-2.5 shadow-md">
+            <span className="text-2xl">🍯</span>
           </div>
-          <h2 className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-2xl font-bold text-transparent">
+          <h2 className="bg-gradient-to-r from-yellow-600 to-yellow-700 bg-clip-text text-2xl font-bold text-transparent">
             {currentStepData.title}
           </h2>
         </div>
-        <div className="rounded-xl bg-white/60 p-4 shadow-sm backdrop-blur-sm">
-          <p className="text-muted-foreground">{currentStepData.description}</p>
+        <div className="relative overflow-hidden rounded-xl border-2 border-yellow-100 bg-white/80 p-4 shadow-sm backdrop-blur-sm">
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_107%,rgba(251,191,36,0.05),transparent_45%)]" />
+          <p className="text-muted-foreground relative z-10">
+            {currentStepData.description}
+          </p>
         </div>
       </div>
 
@@ -239,7 +252,7 @@ export function FinancialProfileForm({
                 variant="outline"
                 onClick={onPrev}
                 disabled={isSubmitting}
-                className="rounded-xl border-2 border-blue-200 px-6 hover:bg-blue-50"
+                className="rounded-2xl border-2 border-yellow-200 bg-white px-6 font-medium text-yellow-700 transition-colors duration-300 hover:border-yellow-300 hover:bg-yellow-50"
               >
                 <ChevronLeft className="mr-2 h-4 w-4" />
                 Previous
@@ -249,7 +262,7 @@ export function FinancialProfileForm({
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 px-6 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-50"
+                className="rounded-2xl bg-gradient-to-r from-yellow-500 to-yellow-600 px-6 font-semibold text-white shadow-md transition-colors duration-300 hover:from-yellow-600 hover:to-yellow-700 disabled:opacity-50"
               >
                 <div className="flex items-center gap-2">
                   {isSubmitting ? (
