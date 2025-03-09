@@ -48,7 +48,7 @@ export default function AuthLayout({
         <div className="w-full max-w-md">{children}</div>
 
         {/* Footer Section */}
-        <div className="-mt-6 flex max-w-md flex-col items-center">
+        <div className="-mt-2 flex max-w-md flex-col items-center">
           <p className="text-muted-foreground text-center text-sm text-balance">
             Transforming financial literacy into a delightful adventure, one
             step at a time.
