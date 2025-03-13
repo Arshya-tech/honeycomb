@@ -14,6 +14,12 @@ _"Making Financial Literacy Engaging, Rewarding & Personalized"_
 - **Crypto-based Rewards System**: Users earn crypto tokens or cashback for completing challenges and reaching financial goals.
 - **AI-Based Expense Tracker & Budgeting Simulator**: Provides personalized financial insights, helping users manage expenses and set realistic budgeting goals.
 
+## Project Demo 
+https://youtu.be/mnhiYtrNkqE?si=2MpkJlwvkpHClNUt
+
+## Pitch Deck
+https://drive.google.com/file/d/1duCiqQchm8nN_klONxV36G50EtjoXxA6/view?usp=sharing
+
 ## Project Structure
 
 - **app/**: Contains the Next.js application source code including pages, layout, and global styles.
