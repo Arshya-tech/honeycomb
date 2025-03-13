@@ -15,7 +15,7 @@ _"Making Financial Literacy Engaging, Rewarding & Personalized"_
 - **AI-Based Expense Tracker & Budgeting Simulator**: Provides personalized financial insights, helping users manage expenses and set realistic budgeting goals.
 
 ## Project Demo 
-https://youtu.be/mnhiYtrNkqE?si=2MpkJlwvkpHClNUt
+URL: https://youtu.be/mnhiYtrNkqE?si=2MpkJlwvkpHClNUt
 
 ## Pitch Deck
 https://drive.google.com/file/d/1duCiqQchm8nN_klONxV36G50EtjoXxA6/view?usp=sharing
